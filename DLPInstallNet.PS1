@@ -88,6 +88,14 @@ Function Install-easyPeerServer {
 
 }
 
+# Cmdlet zum Prüfen, ob das Script auf einem Windows Server ausgeführt wird
+Function Test-WindowsServer() {
+	# 1 = Desktop OS
+	# 2 = Server OS DC
+	# 3 = Server OS Non Domain
+	(Get-CimInstance Win32_OperatingSystem).ProductType -ne 1
+}
+
 # PeerClient einrichten
 Function Install-easyPeerClient {
 
