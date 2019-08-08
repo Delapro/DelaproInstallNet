@@ -150,16 +150,33 @@ Function Test-SMB1Protocol {
 
 	# Unterscheiden zwischen Windows-Server und Windows-Client!!
 	# KB Article: 2696547 sowie 4034314
+	If (Test-WindowsServer) {
+		Get-Windowsfeature -Name FS-SMB1
+	} else {
+		Get-WindowsOptionalFeature -Online -FeatureName smb1protocol
+	}
 
 }
 
 # deaktiviert SMB1
 Function Disable-SMB1Protocol {
 
+	If (Test-WindowsServer) {
+		Uninstall-WindowsFeature -Name FS-SMB1
+	} else {
+		Disable-WindowsOptionalFeature -Online -FeatureName smb1protocol
+	}
+
 }
 
 # aktiviert SMB1
 Function Enable-SMB1Protocol {
+
+	If (Test-WindowsServer) {
+		Install-WindowsFeature -Name FS-SMB1
+	} else {
+		Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol
+	}
 
 }
 
