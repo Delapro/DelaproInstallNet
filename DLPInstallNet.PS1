@@ -96,6 +96,13 @@ Function Test-WindowsServer() {
 	(Get-CimInstance Win32_OperatingSystem).ProductType -ne 1
 }
 
+Function Test-EnergySaveSettings {
+}
+
+Function Disable-EnergySaveSettings {
+	
+}
+
 # PeerClient einrichten
 Function Install-easyPeerClient {
 
