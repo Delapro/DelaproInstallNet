@@ -138,6 +138,9 @@ Function New-easyShare {
 	New-SmbShare -Name $easyShare -Path $easySharePath -CachingMode None -Description Beschreibung -FolderEnumerationMode AccessBased -FullAccess $easyGroup, "Administratoren", "SYSTEM" -LeasingMode None
 
 	# TODO: Berechtigungen für easy-Gruppe auch noch setzen: C:\easy -> Eigenschaften->Sicherheit->Erweitert->Berechtigung ändern->
+
+	# wenn bereits eine Freigabe besteht, müssen zumindest diese Parameter gesetzt werden:
+	# Get-SmbShare $easyShare|Set-SmbShare -CachingMode None -LeasingMode None
 }
 
 Function Test-SMBFirewall {
