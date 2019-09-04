@@ -1,5 +1,7 @@
 # DLPInstallNet.PS1
 #
+# Hauptmodul, von dem aus die anderen Module geladen werden
+#
 
 # Freigabename
 $easyShare = "easy"
