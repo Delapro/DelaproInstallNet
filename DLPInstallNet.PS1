@@ -71,6 +71,10 @@ New-SmbGlobalMapping
 
 
 # Datensicherheit und Performance: New-Mapping -UseWriteThrough:
+# New-SmbMapping -LocalPath 'N:' -RemotePath '\\Server\Share' -UseWriteThrough $True
+# Allerdings gibt es kein Set-SmbMapping, d. h. wenn man die UseWriteTrough Eigenschaft 
+# an einer bestehenden Verbindung ändern möchte, muss diese zuerst aufgehoben und
+# neu gesetzt werden!
 # https://www.starwindsoftware.com/blog/windows-server-2019-introduces-a-new-smb-mapping-option-usewritethrough
 
 * EOF: DLPInstallNet.PS1
