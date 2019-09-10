@@ -10,6 +10,11 @@ Function Install-easyPeerServer {
 
 	# Hostname vom Server setzen?
 
+	# prüfen ob nötige Dienste installiert sind, wenn nicht installieren
+	If (-Not (Test-Services)) {
+		Install-Services
+	}
+
 	If (Test-EnergySaveSettings) {
 		Disable-EnergySaveSettings
 	}
@@ -60,6 +65,9 @@ Function Install-easyPeerServer {
 	Set-SmbServerConfiguration -EnableOplocks $false -Force
 	Set-SmbServerConfiguration -ServerHidden $false -Force
 
+	# um sicher zu gehen, dass obige Konfiguration angewendet werden noch den Server neu starten
+	Restart-Service LanmanServer
+
 	HOSTNAME.EXE
 
 	# Mapping von Netzlaufwerk auf Localhost, damit einheitlich ein Netzlaufwerksbuchstabe zur Verfügung steht
@@ -101,6 +109,30 @@ Function Enable-NetworkSharingFirewallPorts {
 	$fwRules = Get-NetFirewallProfile -Profile $Profile | Get-NetFirewallRule | Where-Object DisplayGroup -eq $FirewallNetshareGroup
 	$fwRules | Enable-NetFirewallRule
 	# Set-NetFirewallRule -DisplayGroup "Datei- und Druckerfreigabe"
+}
+
+Function Test-Services {
+	[CmdletBinding()]
+	Param(
+	)
+
+	If (Test-WindowsServer) {
+
+	} else {
+		
+	}
+}
+
+Function Install-Services {
+	[CmdletBinding()]
+	Param(
+	)
+
+	If (Test-WindowsServer) {
+		# FileAndStorage-Services, File-Services, FS-FileServer, RSAT-File-Services
+	} else {
+
+	}
 }
 
 # EOF: DLPInstallServer.PS1

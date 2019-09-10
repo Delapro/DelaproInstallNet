@@ -77,4 +77,9 @@ New-SmbGlobalMapping
 # neu gesetzt werden!
 # https://www.starwindsoftware.com/blog/windows-server-2019-introduces-a-new-smb-mapping-option-usewritethrough
 
+# Ersatz für Net view:
+# $sv = New-CimInstance -Computername Servername
+# Get-SMBShare -CimInstance $sv
+
+
 * EOF: DLPInstallNet.PS1

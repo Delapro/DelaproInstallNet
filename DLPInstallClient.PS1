@@ -14,6 +14,9 @@ Function Install-easyPeerClient {
 	Set-SmbClientConfiguration -OplocksDisabled $true -Force
 	Set-SmbClientConfiguration -UseOpportunisticLocking $false -Force
 
+	# um sicher zu gehen, dass obige Konfiguration angewendet werden noch den Dienst neu starten
+	Restart-Service LanmanWorkstation
+
 	# Mapping einrichten
 }
 
