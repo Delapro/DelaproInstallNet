@@ -77,8 +77,8 @@ New-SmbGlobalMapping
 # neu gesetzt werden!
 # https://www.starwindsoftware.com/blog/windows-server-2019-introduces-a-new-smb-mapping-option-usewritethrough
 
-# Ersatz für Net view:
-# $sv = New-CimInstance -Computername Servername
+# Ersatz für Net view: funktioniert aber nur wenn WinRM aktiv ist, also TrustedHost einrichten!
+# $sv = New-CimSession -Computername Servername
 # Get-SMBShare -CimInstance $sv
 
 
