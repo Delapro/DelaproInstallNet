@@ -82,4 +82,12 @@ New-SmbGlobalMapping
 # Get-SMBShare -CimInstance $sv
 
 
+# bei Problemen mit Zugriffsrechten, aktuelle Einstellungen sichern:
+# Get-SmbShare | Get-SmbShareAccess | Export-Clixml -Path C:\Temp\SmbPermissions.xml
+# und wieder zurücksichern
+# $PermissionList = Import-Clixml -Path C:\Temp\SmbPermissions.xml
+# foreach($Permission in $PermissionList){
+#     Grant-SmbShareAccess -Name $Permission.Name -AccountName $Permission.AccountName -AccessRight $PermissionList.AccessRight
+# }
+
 * EOF: DLPInstallNet.PS1
