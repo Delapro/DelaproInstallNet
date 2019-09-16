@@ -119,13 +119,20 @@ Function Disable-EnergySaveSettings {
 
 Function Test-SMBFirewall {
 
+	# "Datei- und Druckerfreigabe"
+	Get-NetFirewallRule -DisplayGroup $FirewallNetshareGroup | Where-Object Enabled -eq $true
+
 }
 
 Function Enable-SMBFirewallPorts {
 
+	Set-NetFirewallRule -DisplayGroup $FirewallNetshareGroup -Enabled True
+
 }
 
 Function Disable-SMBFirewallPorts {
+
+	Set-NetFirewallRule -DisplayGroup $FirewallNetshareGroup -Enabled False
 
 }
 
