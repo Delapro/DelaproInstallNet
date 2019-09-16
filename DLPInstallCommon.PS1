@@ -110,6 +110,10 @@ Function Disable-NetworkTrace {
 }
 
 Function Test-EnergySaveSettings {
+
+	# Powercfg.exe
+	Get-CimInstance -Namespace root/cimv2/power -Classname Win32_PowerPlan
+
 }
 
 Function Disable-EnergySaveSettings {
