@@ -41,6 +41,9 @@ Get-WinEvent -LogName 'Microsoft-Windows-SMBServer/*' | Select-Object -First 10
 Get-WinEvent -LogName 'Microsoft-Windows-SMBClient/*' | Select-Object -First 10
 
 
+# Probleme mit verlorenen Paketen bei Netzwerkkarten prüfen:
+Get-NetAdapterStatistics|select *error*, *discard* |fl *
+
 # Dienste überprüfen
 Get-Service Netlogon
 Get-Service LanmanWorkstation
