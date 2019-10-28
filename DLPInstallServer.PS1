@@ -65,6 +65,10 @@ Function Install-easyPeerServer {
 	Set-SmbServerConfiguration -EnableOplocks $false -Force
 	Set-SmbServerConfiguration -ServerHidden $false -Force
 
+	# Abschalten zur Sicherheit, wenn nicht unbedingt benötigt
+	# wenn es benötigt wird, kann man auch bei den Clients gezielt Multichannel abschalten
+	Set-SmbServerConfiguration -EnableMultiChannel $false -Force
+
 	# um sicher zu gehen, dass obige Konfiguration angewendet werden noch den Server neu starten
 	Restart-Service LanmanServer
 
