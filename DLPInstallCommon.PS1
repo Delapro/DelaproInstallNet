@@ -75,8 +75,8 @@ Function Enable-NetworkTrace {
 	[CmdletBinding()]
 	Param(
 		[String]$TraceFile="$($env:SystemRoot)\$($env:COMPUTERNAME)_Repro_trace.etl",
-		[Switch]$KillAllMappings=$True,
-		[Switch]$ClearCaches=$True
+		[Switch]$KillAllMappings=$False,
+		[Switch]$ClearCaches=$False
 	)
 
 	# auf Basis von https://support.microsoft.com/en-sg/help/3181029/smb-file-server-share-access-is-unsuccessful-through-dns-cname-alias
@@ -92,9 +92,9 @@ Function Enable-NetworkTrace {
 
 	If ($ClearCaches) {
 		# alle Caches leeren
-		IPConfig.exe /FLUSDNS
-		NBTSTAT.exe RR
-		KLIST.exe /PURGE
+		IPConfig.exe /FLUSHDNS
+		NBTSTAT.exe -RR
+		KLIST.exe PURGE
 		ARP.exe -d
 	}
 
