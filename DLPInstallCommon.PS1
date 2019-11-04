@@ -74,7 +74,7 @@ Function Enable-ICMPEcho {
 Function Enable-NetworkTrace {
 	[CmdletBinding()]
 	Param(
-		[String]$TraceFile="$($env:SystemRoot)\$($env:COMPUTERNAME)_Repro_trace.etl",
+		[String]$TraceFile="$($env:SystemRoot)\$($env:COMPUTERNAME)_$((Get-Date -Format o).Replace(':','_'))_Repro_trace.etl",
 		[Switch]$KillAllMappings=$False,
 		[Switch]$ClearCaches=$False
 	)
