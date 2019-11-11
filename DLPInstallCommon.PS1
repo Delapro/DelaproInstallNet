@@ -140,4 +140,23 @@ Function Disable-SMBFirewallPorts {
 
 }
 
+Function Test-NetworkDiscoveryFirewall {
+
+	# "Datei- und Druckerfreigabe"
+	Get-NetFirewallRule -DisplayGroup $FirewallNetworkDiscoveryGroup | Where-Object Enabled -eq $true
+
+}
+
+Function Enable-NetworkDiscoveryFirewallPorts {
+
+	Set-NetFirewallRule -DisplayGroup $FirewallNetworkDiscoveryGroup -Enabled True
+
+}
+
+Function Disable-NetworkDiscoveryFirewallPorts {
+
+	Set-NetFirewallRule -DisplayGroup $FirewallNetworkDiscoveryGroup -Enabled False
+
+}
+
 # EOF: DLPInstallCommon.PS1

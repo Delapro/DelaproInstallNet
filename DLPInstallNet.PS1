@@ -23,6 +23,9 @@ $PeerServerName = "PeerServer.local"
 $FirewallNetshareGroup = "File and Printer Sharing"
 $FirewallNetshareGroup = "Datei- und Druckerfreigabe"
 
+$FirewallNetworkDiscoveryGroup = "Network Discovery"
+$FirewallNetworkDiscoveryGroup = "Netzwerkerkennung"
+
 # Module einbinden
 . .\DLPInstallCommon.PS1
 . .\DLPInstallServer.PS1

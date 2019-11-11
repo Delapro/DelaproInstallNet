@@ -6,6 +6,9 @@ Function Install-easyPeerClient {
 
 	# Einstellungen von Internet Explorer Intranet Settings prüfen und
 	# das verwendete Netzwerklaufwerk bei den Ausnahmen hinzufügen
+	If (-Not (Test-NetworkDiscoveryFirewall)) {
+		Enable-NetworkDiscoveryFirewallPorts
+	}
 
 	# easy Benutzergruppe einrichten
 
