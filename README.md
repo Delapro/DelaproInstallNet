@@ -24,6 +24,13 @@ Get-DnsClient
 
 # Connectionsuffix ermitteln
 (Get-DnsClient -InterfaceIndex ((Get-NetConnectionProfile)| select -ExpandProperty Interfaceindex)).ConnectionSpecificSuffix
+
+# Network Location Awareness
+Get-WinEvent -LogName "Microsoft-Windows-NlaSvc/Operational"|select -First 5 | ft -Wrap
+# Netzwerkprofile
+Get-WinEvent -LogName "Microsoft-Windows-NetworkProfile/Operational"|select -First 5 | ft -Wrap
+# NCSI, Internetkonnektivität prüfen
+Get-WinEvent -LogName "Microsoft-Windows-NCSI/Operational"|select -First 5 | ft -Wrap
 ```
 
 ## Schlanke Installation im Netz
