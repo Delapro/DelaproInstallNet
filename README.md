@@ -1,6 +1,14 @@
 # DelaproInstallNet
 
-Powershell Installationsscript um Delapro im Netzwerk unter Windows 10 zu installieren. Hier finden sich nur die netzwerkspezifischen Scripte. Für die eigentliche Installation wird auf die [DelaproInstall-Sktipte](https://github.com/Delapro/DelaproInstall) zurückgegriffen.
+Powershell Installationsscript um Delapro im Netzwerk unter Windows 10 zu installieren. Hier finden sich nur die netzwerkspezifischen Scripte. Für die eigentliche Installation wird auf die [DelaproInstall-Skripte](https://github.com/Delapro/DelaproInstall) zurückgegriffen.
+
+Hat man die normalen DelaproInstall-Skripte geladen, kann man mit dem Befehl 
+
+```Powershell
+Invoke-DelaproInstallNetDownloadAndInit
+```
+
+die Netzwerkscripte automatisch nachladen. Danach stehen einem die Funktionen zur Verfügung.
 
 > **Hinweis zu älteren Versionen**
 >
