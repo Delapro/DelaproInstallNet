@@ -83,7 +83,8 @@ Function Enable-NetworkTrace {
 
 	# Logging aktivieren
 	Write-Verbose "Tracefile: $TraceFile"
-	netsh.exe trace start NetConnection capture=yes maxsize=100 filemode=circular overwrite=yes traceFile=$traceFile
+	# netsh.exe trace start NetConnection capture=yes maxsize=100 filemode=circular overwrite=yes traceFile=$traceFile
+	netsh.exe trace start capture=yes maxsize=100 filemode=circular overwrite=yes traceFile=$traceFile
 	
 	# alle Verbindungen aufheben
 	If ($KillAllMappings) {
