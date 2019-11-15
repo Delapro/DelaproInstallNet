@@ -23,7 +23,7 @@ Function Install-easyPeerClient {
 	# Set-SmbClientConfiguration -FileNotFoundCacheLifetime 0
 
 	# um sicher zu gehen, dass obige Konfiguration angewendet werden noch den Dienst neu starten
-	Restart-Service LanmanWorkstation
+	Restart-Service LanmanWorkstation -Force -Verbose
 
 	# Mapping einrichten
 }

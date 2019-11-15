@@ -70,7 +70,7 @@ Function Install-easyPeerServer {
 	Set-SmbServerConfiguration -EnableMultiChannel $false -Force
 
 	# um sicher zu gehen, dass obige Konfiguration angewendet werden noch den Server neu starten
-	Restart-Service LanmanServer
+	Restart-Service LanmanServer -Force -Verbose
 
 	HOSTNAME.EXE
 

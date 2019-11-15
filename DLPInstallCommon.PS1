@@ -84,8 +84,12 @@ Function Enable-NetworkTrace {
 	# Logging aktivieren
 	Write-Verbose "Tracefile: $TraceFile"
 	# netsh.exe trace start NetConnection capture=yes maxsize=100 filemode=circular overwrite=yes traceFile=$traceFile
-	netsh.exe trace start capture=yes maxsize=100 filemode=circular overwrite=yes traceFile=$traceFile
+	# report=yes sorgt für zusätzliche Dateien und vor allem für Verzeichnisstruktur
+	netsh.exe trace start report=no capture=yes maxsize=100 filemode=circular overwrite=yes traceFile=$traceFile
 	
+	# da leider der MS Message Analyzer eingestellt wird, benötigt man
+	# https://github.com/microsoft/etl2pcapng zum Konvertieren von Mitschnitten zu Wireshark
+
 	# alle Verbindungen aufheben
 	If ($KillAllMappings) {
 		NET USE * /DELETE
