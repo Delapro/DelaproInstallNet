@@ -71,7 +71,7 @@ Function Enable-ICMPEcho {
 }
 
 # Troubleshoot
-Function Enable-NetworkTrace {
+Function Start-NetworkTrace {
 	[CmdletBinding()]
 	Param(
 		[String]$TraceFile="$($env:SystemRoot)\$($env:COMPUTERNAME)_$((Get-Date -Format o).Replace(':','_'))_Repro_trace.etl",
@@ -105,7 +105,7 @@ Function Enable-NetworkTrace {
 
 }
 
-Function Disable-NetworkTrace {
+Function Stop-NetworkTrace {
 	[CmdletBinding()]
 	Param(
 	)
