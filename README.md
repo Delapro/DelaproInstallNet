@@ -41,6 +41,39 @@ Get-WinEvent -LogName "Microsoft-Windows-NetworkProfile/Operational"|select -Fir
 Get-WinEvent -LogName "Microsoft-Windows-NCSI/Operational"|select -First 5 | ft -Wrap
 ```
 
+### Netzwerkpakete mitschneiden
+
+Bei größeren Problemen bei der Netzwerkkommunikation bietet sich auch ein Netzwerkpaketmitschnitt an.
+
+Für diesen Fall richten wir hier zwei Verknüpfungen auf dem Desktop ein. Einmal um einen Mitschnitt zu starten und eine zweite um einen Mitschnitt zu beenden.
+
+Die Einrichtung des Scripts benötigt keine Adminrechte, allerdings das Starten bzw. Beenden des Netzwerkpaketmitschnitts benötigt Adminrechte.
+
+```Powershell
+If (Test-Path C:\Temp) {
+    Set-Location c:\Temp
+
+    Invoke-DelaproInstallNetDownloadAndInit
+
+    $psTrStart =@"
+    . .\DLPInstallCommon.PS1
+    Start-NetworkTrace -TraceFile "$((Resolve-Path .).Path)\$($env:COMPUTERNAME)_$((Get-Date -Format o).Replace(':','_')).etl"
+"@
+
+    $psTrStop = @"
+    . .\DLPInstallCommon.PS1
+    Stop-NetworkTrace
+"@
+
+    $psTrStart | Set-Content StartNetTrace.PS1
+    $psTrStop  | Set-Content StopNetTrace.PS1
+
+    New-PowershellScriptShortcut -Path .\StartNetTrace.PS1 -Admin -LinkFilename 'Trace starten' -Description 'Startet einen Netzwerkpaketmitschnitt' -Folder (Get-DesktopFolder)
+    New-PowershellScriptShortcut -Path .\StopNetTrace.PS1 -Admin -LinkFilename 'Trace stoppen' -Description 'Stopt einen Netzwerkpaketmitschnitt' -Folder (Get-DesktopFolder)
+
+}
+```
+
 ## Schlanke Installation im Netz
 
 Wenn man die Installation der Demoversion auf den einzelnen Stationen vermeiden möchte, so benötigt man doch gewisse Druckerinstallationen.
