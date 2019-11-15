@@ -55,15 +55,15 @@ If (Test-Path C:\Temp) {
 
     Invoke-DelaproInstallNetDownloadAndInit
 
-    $psTrStart =@"
+    $psTrStart =@'
     . .\DLPInstallCommon.PS1
     Start-NetworkTrace -TraceFile "$((Resolve-Path .).Path)\$($env:COMPUTERNAME)_$((Get-Date -Format o).Replace(':','_')).etl"
-"@
+'@
 
-    $psTrStop = @"
+    $psTrStop = @'
     . .\DLPInstallCommon.PS1
     Stop-NetworkTrace
-"@
+'@
 
     $psTrStart | Set-Content StartNetTrace.PS1
     $psTrStop  | Set-Content StopNetTrace.PS1
