@@ -164,4 +164,28 @@ Function Disable-NetworkDiscoveryFirewallPorts {
 
 }
 
+# ladet etl2pcapng.exe von Github und speichert die EXE im aktuellen Verzeichnis
+Function Install-Etl2PcapConverter {
+	[CmdletBinding()]
+	Param(
+		[System.String]$tempDirectory="$Env:TEMP\"
+	)
+
+	$url = 'https://github.com/microsoft/etl2pcapng/releases/download/v1.0.0/etl2pcapng.zip'
+	$url = Resolve-HttpUrlRedirect $url
+
+	# klassisches geht nicht: Start-BitsTransfer -Source $url -Destination $tempDirectory\etl2Pcap.zip
+	Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $tempDirectory\etl2Pcap.zip
+
+	If (Test-Path $tempDirectory\etl2Pcap.zip) {
+		Expand-Archive $tempDirectory\etl2Pcap.zip
+		If (Test-64Bit) {
+			If (Test-Path '.\etl2Pcap\etl2pcapng\x64\etl2pcapng.exe') {
+				Copy-Item '.\etl2Pcap\etl2pcapng\x64\etl2pcapng.exe'
+			}
+			Remove-Item .\etl2Pcap\  -Recurse -Force
+		}
+	}
+}
+
 # EOF: DLPInstallCommon.PS1
