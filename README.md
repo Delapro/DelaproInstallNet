@@ -74,6 +74,15 @@ If (Test-Path C:\Temp) {
 }
 ```
 
+Zum Analysieren der mitgeschnittenen Pakete verwendet man Wireshark. Damit die .etl-Dateien mit älteren Versionen von Wireshark geöffnet werden können, müssen diese vorher konvertiert werden.
+
+```Powershell
+# benötigten Konverter herunterladen
+Install-Etl2PcapConverter
+# Konvertierung aller ETL-Dateien im aktuellen Verzeichnis durchführen
+dir *.etl | % {$_.name; .\etl2pcapng.exe $_.fullname $_.name.replace('.etl','.pcapng')}
+```
+
 ## Schlanke Installation im Netz
 
 Wenn man die Installation der Demoversion auf den einzelnen Stationen vermeiden möchte, so benötigt man doch gewisse Druckerinstallationen.
