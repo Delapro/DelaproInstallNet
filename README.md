@@ -103,6 +103,8 @@ $DlpPath = "N:\Delapro"
 Start-BitsTransfer https://easysoftware.de/download/dlpwinpr.exe
 Start-Process -Wait .\dlpwinpr.exe -ArgumentList "-a", "-delaproPath=$($DlpPath)"
 
+# was ist mit Image, Zert und Chart?
+
 Install-eDocPrintPro -tempPath "$($DLPInstPath)"
 
 Start-Process -Wait "C:\Program Files\Common Files\MAYComputer\eDocPrintPro\eDocPrintProUtil.EXE" -ArgumentList "/AddPrinter", '/Printer="DelaproPDF"', '/Driver="eDocPrintPro"', '/ProfilePath="C:\ProgramData\eDocPrintPro\DelaproPDF.ESFX"', "/Silent"
@@ -145,3 +147,29 @@ If (Test-Path "$($DLPPath)\LASER\XXGHOSTPDFX.BAT") {
 
 ```
 
+## Sonstiges
+
+### Passwortänderung per Verknüpfung
+
+Im einfachen Peernetz müssen bei Passwortänderungen diese synchron gehalten werden, damit dies komfortabel für den Benutzer möglich ist, kann man diese Verknüpfung verwenden:
+
+```Powershell
+# für den aktuellen Benutzer
+$source=@'
+$user = $env:USERNAME
+Set-LocalUser -Name $user -Password (Get-Credential -UserName $user -Message 'Bitte neues Passwort eingeben').Password
+'@
+
+$source | Set-Content ChangePassword.PS1
+
+New-PowershellScriptShortcut -Path .\ChangePassword.PS1 -Admin -LinkFilename 'Kennwort ändern' -Description 'Erlaubt das ändern des Kennworts des aktuellen Benutzers' -Folder (Get-DesktopFolder)
+
+# für bestimmte Benutzer, benötigt Adminrechte:
+$source=@'
+$user=(Get-LocalUser | where enabled| Out-GridView -PassThru -Title "Bitte Benutzer zum Passwort ändern auswählen").name
+Set-LocalUser -Name $user -Password (Get-Credential -UserName $user -Message 'Bitte neues Passwort eingeben').Password
+'@
+$source | Set-Content ChangePassword.PS1
+
+New-PowershellScriptShortcut -Path .\ChangePassword.PS1 -Admin -LinkFilename 'Kennwort ändern' -Description 'Erlaubt das ändern des Kennworts eines bestimmten Benutzers' -Folder (Get-DesktopFolder -AllUsers)
+```
