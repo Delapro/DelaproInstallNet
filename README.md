@@ -83,6 +83,16 @@ Install-Etl2PcapConverter
 dir *.etl | % {$_.name; .\etl2pcapng.exe $_.fullname $_.name.replace('.etl','.pcapng')}
 ```
 
+Wenn man die Mitschnitte übertragen muss, macht es Sinn diese zu packen bzw. später wieder zu entpacken. Hier noch die passenden Routinen.
+
+```Powershell
+# zum Packen
+dir *.etl | % {$_.Name; Compress-Archive -Path $_.fullname -CompressionLevel Optimal -DestinationPath $_.Name.Replace('.etl','.zip')}
+
+# zum Entpacken
+dir *.zip | Expand-Archive -Verbose -DestinationPath .
+```
+
 ## Schlanke Installation im Netz
 
 Wenn man die Installation der Demoversion auf den einzelnen Stationen vermeiden möchte, so benötigt man doch gewisse Druckerinstallationen.
