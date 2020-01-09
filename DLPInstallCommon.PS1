@@ -188,4 +188,21 @@ Function Install-Etl2PcapConverter {
 	}
 }
 
+# Passwordablauf beim angegebenen Benutzer deaktivieren
+Function Set-PasswordExpirationOff {
+	[CmdletBinding()]
+	Param(
+		[System.String]$Benutzer
+	)
+
+	$user = [adsi]"WinNT://./$Benutzer"
+	If ($user) {
+		$user.UserFlags.value = $user.UserFlags.value -bor 0x10000
+		$user.CommitChanges()
+	} else {
+		throw "$Benutzer nicht gefunden, Passwortablauf wurde nicht deaktiviert"
+	}
+
+}
+
 # EOF: DLPInstallCommon.PS1
