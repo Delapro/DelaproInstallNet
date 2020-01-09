@@ -195,10 +195,14 @@ Function Set-PasswordExpirationOff {
 		[System.String]$Benutzer
 	)
 
+	# https://docs.microsoft.com/en-us/windows/win32/api/iads/ne-iads-ads_user_flag_enum
+	$ADS_UF_DONT_EXPIRE_PASSWD = 65536 # 0x10000
+
+	# evtl. explizite Domain beachten: [ADSI]"WinNT://$computer/$Benutzer"
 	$user = [adsi]"WinNT://./$Benutzer"
 	If ($user) {
 		If ($null -ne $user.Name) {
-			$user.UserFlags.value = $user.UserFlags.value -bor 0x10000
+			$user.UserFlags.value = $user.UserFlags.value -bor $ADS_UF_DONT_EXPIRE_PASSWD
 			$user.CommitChanges()
 		} else {
 			throw "$Benutzer nicht gefunden, Passwortablauf wurde nicht deaktiviert."
@@ -209,4 +213,29 @@ Function Set-PasswordExpirationOff {
 
 }
 
+Function Set-UserAccountDisabled {
+	[CmdletBinding()]
+	Param(
+		[System.String]$Benutzer
+	)
+
+	# siehe auch: https://docs.microsoft.com/de-de/windows/win32/ad/managing-users
+
+	# https://docs.microsoft.com/en-us/windows/win32/api/iads/ne-iads-ads_user_flag_enum
+	$ADS_UF_ACCOUNTDISABLE = 2 # 0x2
+	$ADS_UF_NORMAL_ACCOUNT = 512 # 0x200
+
+	$user = [adsi]"WinNT://./$Benutzer"
+	If ($user) {
+		If ($null -ne $user.Name) {
+			$user.UserFlags.value = $user.UserFlags.value -bor $ADS_UF_ACCOUNTDISABLE
+			$user.CommitChanges()
+		} else {
+			throw "$Benutzer nicht gefunden, Passwortablauf wurde nicht deaktiviert."
+		}
+	} else {
+		throw "Problem mit Benutzerverwaltungszugriff!"
+	}
+
+}
 # EOF: DLPInstallCommon.PS1
