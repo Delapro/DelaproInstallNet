@@ -197,10 +197,14 @@ Function Set-PasswordExpirationOff {
 
 	$user = [adsi]"WinNT://./$Benutzer"
 	If ($user) {
-		$user.UserFlags.value = $user.UserFlags.value -bor 0x10000
-		$user.CommitChanges()
+		If ($null -ne $user.Name) {
+			$user.UserFlags.value = $user.UserFlags.value -bor 0x10000
+			$user.CommitChanges()
+		} else {
+			throw "$Benutzer nicht gefunden, Passwortablauf wurde nicht deaktiviert."
+		}
 	} else {
-		throw "$Benutzer nicht gefunden, Passwortablauf wurde nicht deaktiviert"
+		throw "Problem mit Benutzerverwaltungszugriff!"
 	}
 
 }
