@@ -222,6 +222,7 @@ Function Set-UserAccountDisabled {
 	# siehe auch: https://docs.microsoft.com/de-de/windows/win32/ad/managing-users
 
 	# https://docs.microsoft.com/en-us/windows/win32/api/iads/ne-iads-ads_user_flag_enum
+	# Flag abschalten mittels bxor
 	$ADS_UF_ACCOUNTDISABLE = 2 # 0x2
 	$ADS_UF_NORMAL_ACCOUNT = 512 # 0x200
 

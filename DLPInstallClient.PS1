@@ -17,10 +17,10 @@ Function Install-easyPeerClient {
 	Set-SmbClientConfiguration -OplocksDisabled $true -Force
 	Set-SmbClientConfiguration -UseOpportunisticLocking $false -Force
 
-	# zusätzlich vielleicht
-	# Set-SmbClientConfiguration -DirectoryCacheLifetime 0
-	# Set-SmbClientConfiguration -FileInfoCacheLifetime 0
-	# Set-SmbClientConfiguration -FileNotFoundCacheLifetime 0
+	# zusätzlich vielleicht, wird für Suchserver benötigt:
+	Set-SmbClientConfiguration -DirectoryCacheLifetime 0 -Force
+	Set-SmbClientConfiguration -FileInfoCacheLifetime 0 -Force
+	Set-SmbClientConfiguration -FileNotFoundCacheLifetime 0 -Force
 
 	# um sicher zu gehen, dass obige Konfiguration angewendet werden noch den Dienst neu starten
 	Restart-Service LanmanWorkstation -Force -Verbose
