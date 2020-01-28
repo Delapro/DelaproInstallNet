@@ -171,7 +171,10 @@ Function Install-Etl2PcapConverter {
 		[System.String]$tempDirectory="$Env:TEMP\"
 	)
 
-	$url = 'https://github.com/microsoft/etl2pcapng/releases/download/v1.0.0/etl2pcapng.zip'
+	# hier eine reine Python-Variante: https://github.com/aaptel/etl2pcap/blob/master/etl2pcap.py
+
+	# Hinweis zu PID: https://blog.didierstevens.com/2020/01/28/etl2pcapng-support-for-process-ids/
+	$url = 'https://github.com/microsoft/etl2pcapng/releases/download/v1.3.0/etl2pcapng.zip'
 	$url = Resolve-HttpUrlRedirect $url
 
 	# klassisches geht nicht: Start-BitsTransfer -Source $url -Destination $tempDirectory\etl2Pcap.zip
