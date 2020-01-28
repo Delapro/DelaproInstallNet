@@ -140,4 +140,6 @@ Function Install-Services {
 	}
 }
 
+# Get-ACL/Set-ACL Ersatz: http://woshub.com/manage-ntfs-permissions-powershell/
+
 # EOF: DLPInstallServer.PS1

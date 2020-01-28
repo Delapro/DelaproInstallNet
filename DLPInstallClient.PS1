@@ -28,4 +28,33 @@ Function Install-easyPeerClient {
 	# Mapping einrichten
 }
 
+
+# Netzwerkverbindung prüfen und gegebenenfalls wiederherstellen, sollte auf jedem Client lokal gespeichert und mittels Verknüpfung aufrufbar sein.
+# es sollte für die Netzwerkeinrichtung ein NetSetup Unterverzeichnis im Delapro angelegt werden, damit darüber die nötigen Scripte erzeugt werden können und dann am einzelnen Client ausgeführt werden, damit die Einrichtung darüber schneller von statten geht.
+$localPath = 'N:'
+$remotePath = '\\PC50675\easy'
+If (((Get-SmbMapping -LocalPath $localPath -ea SilentlyContinue).Status) -eq $null) {
+  # es existiert noch kein lokales Laufwerk, also neu anlegen
+  New-SmbMapping -LocalPath $localPath -RemotePath $remotePath
+}
+If (((Get-SmbMapping -LocalPath $localPath -ea SilentlyContinue).Status) -eq 'Unavailable') {
+  # Laufwerk wurde getrennt, also Verbindung neu aufbauen
+  New-SmbMapping -LocalPath $localPath -RemotePath $remotePath
+}
+If (((Get-SmbMapping -LocalPath $localPath -ea SilentlyContinue).Status) -ne 'OK') {
+  # wenn noch nicht erfolgreich, zunächst versuchen die Verbindung zu entfernen und dann neu aufzubauen
+  Remove-SmbMapping -LocalPath $localPath -Confirm:$False -Force
+  New-SmbMapping -LocalPath $localPath -RemotePath $remotePath
+}
+If (((Get-SmbMapping -LocalPath $localPath -ea SilentlyContinue).Status) -eq 'OK') {
+  Write-Host -ForegroundColor Green "Verbindung sollte jetzt verfügbar sein!"
+  Start-Sleep -Seconds 1
+} else {
+  Write-Error "Probleme Verbindung zwischen $localPath und $remotePath aufzubauen."
+  "Fehler wurden in die Windows Zwischenablage kopiert."
+  $error | Set-Clipboard
+  Start-Sleep -Seconds 30
+}
+
+
 # EOF: DLPInstallClient.PS1
