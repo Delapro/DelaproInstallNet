@@ -5,7 +5,8 @@ Powershell Installationsscript um Delapro im Netzwerk unter Windows 10 zu instal
 Hat man die normalen DelaproInstall-Skripte geladen, kann man mit dem Befehl 
 
 ```Powershell
-Invoke-DelaproInstallNetDownloadAndInit
+# Dot-Sourcing damit die Funktionen zur Verfügung stehen!
+. Invoke-DelaproInstallNetDownloadAndInit
 ```
 
 die Netzwerkscripte automatisch nachladen. Danach stehen einem die Funktionen zur Verfügung.
