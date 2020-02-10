@@ -28,6 +28,7 @@ Function Install-easyPeerClient {
 	# Mapping einrichten
 }
 
+<#
 
 # Netzwerkverbindung prüfen und gegebenenfalls wiederherstellen, sollte auf jedem Client lokal gespeichert und mittels Verknüpfung aufrufbar sein.
 # es sollte für die Netzwerkeinrichtung ein NetSetup Unterverzeichnis im Delapro angelegt werden, damit darüber die nötigen Scripte erzeugt werden können und dann am einzelnen Client ausgeführt werden, damit die Einrichtung darüber schneller von statten geht.
@@ -56,5 +57,6 @@ If (((Get-SmbMapping -LocalPath $localPath -ea SilentlyContinue).Status) -eq 'OK
   Start-Sleep -Seconds 30
 }
 
+#>
 
 # EOF: DLPInstallClient.PS1
