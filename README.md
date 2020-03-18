@@ -184,3 +184,13 @@ $source | Set-Content ChangePassword.PS1
 
 New-PowershellScriptShortcut -Path .\ChangePassword.PS1 -Admin -LinkFilename 'Kennwort ändern' -Description 'Erlaubt das ändern des Kennworts eines bestimmten Benutzers' -Folder (Get-DesktopFolder -AllUsers)
 ```
+
+### nicht verbundene Netzwerklaufwerke wieder verbinden
+
+Das zu verbindende Netzlaufwerk muss zum Zeitpunkt der Erstellung des Scripts, welches über Save-NetDriveRefresh erstellt wird, verbunden sein.
+
+```Powershell
+# erzeugt eine PS1-Datei mit dem Wiederherstellungsscript
+Save-NetDriveRefresh
+New-PowershellScriptShortcut -Path .\RefreshNetDrive.PS1 -Admin -LinkFilename 'Netzlaufwerk-Verbindung wiederherstellen' -Description 'Stellt die Verbindung zu einem Netzlaufwerk wieder her.' -Folder (Get-DesktopFolder -CurrentUser)
+```
