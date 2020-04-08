@@ -26,6 +26,9 @@ $FirewallNetshareGroup = "Datei- und Druckerfreigabe"
 $FirewallNetworkDiscoveryGroup = "Network Discovery"
 $FirewallNetworkDiscoveryGroup = "Netzwerkerkennung"
 
+$FirewallRemoteDesktop = "Remote Desktop"
+$FirewallRemoteDesktop = "Remotedesktop"
+
 # Module einbinden
 . .\DLPInstallCommon.PS1
 . .\DLPInstallServer.PS1

@@ -70,6 +70,24 @@ Function Enable-ICMPEcho {
 
 }
 
+Function Test-RemoteDesktop {
+
+	Get-NetFirewallRule -DisplayGroup $FirewallRemoteDesktop | Where-Object Enabled -eq $true
+
+}
+
+Function Disable-RemoteDesktop {
+
+	Set-NetFirewallRule -DisplayGroup $FirewallRemoteDesktop -Enabled False
+
+}
+
+Function Enable-RemoteDesktop {
+
+	Set-NetFirewallRule -DisplayGroup $FirewallRemoteDesktop -Enabled True
+
+}
+
 # Troubleshoot
 Function Start-NetworkTrace {
 	[CmdletBinding()]
