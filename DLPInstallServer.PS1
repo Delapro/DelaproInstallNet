@@ -89,7 +89,7 @@ Function New-easyShare {
 	New-Item -ItemType Directory -Path $easySharePath
 
 	# früher war FolderEnumerationMode Unrestricted
-	New-SmbShare -Name $easyShare -Path $easySharePath -CachingMode None -Description Beschreibung -FolderEnumerationMode AccessBased -FullAccess $easyGroup, "Administratoren", "SYSTEM" -LeasingMode None
+	New-SmbShare -Name $easyShare -Path $easySharePath -CachingMode None -Description Beschreibung -FolderEnumerationMode AccessBased -FullAccess $easyGroup, (Get-AdministratorLocalized), "SYSTEM" -LeasingMode None
 
 	# TODO: Berechtigungen für easy-Gruppe auch noch setzen: C:\easy -> Eigenschaften->Sicherheit->Erweitert->Berechtigung ändern->
 
