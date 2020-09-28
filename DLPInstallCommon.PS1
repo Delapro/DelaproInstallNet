@@ -1,6 +1,14 @@
 # DLPInstallCommon.PS1
 #
 
+Function Get-AdministratorLocalized {
+	$admin = Get-LocalGroup | Where-Object name -like 'Administrator*'
+	If ($null -eq $admin) {
+		$admin = "Administratoren"
+	}
+	$admin
+}
+
 # Cmdlet zum Prüfen, ob das Script auf einem Windows Server ausgeführt wird
 Function Test-WindowsServer() {
 	# 1 = Desktop OS
