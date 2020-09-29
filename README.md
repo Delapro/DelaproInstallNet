@@ -14,7 +14,7 @@ Install-NetPrompt
 
 # falls der COMPUTERNAME mal was nicht hergibt, kann man auch die Anzeige
 # selber bestimmen
-Install-NetPrompt -PromptEx 'SERVER'
+Install-NetPrompt -PromptExt 'SERVER'
 ```
 
 die Netzwerkscripte automatisch nachladen. Danach stehen einem die Funktionen zur Verfügung.
