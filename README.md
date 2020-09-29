@@ -7,6 +7,14 @@ Hat man die normalen DelaproInstall-Skripte geladen, kann man mit dem Befehl
 ```Powershell
 # Dot-Sourcing damit die Funktionen zur Verfügung stehen!
 . Invoke-DelaproInstallNetDownloadAndInit
+
+# für einen besseren Üblick ist es manchmal hilfreich zu wissen auf welchem
+# Rechner man gerade ist, dadurch wird der COMPUTERNAME ausgegeben
+Install-NetPrompt
+
+# falls der COMPUTERNAME mal was nicht hergibt, kann man auch die Anzeige
+# selber bestimmen
+Install-NetPrompt -PromptEx 'SERVER'
 ```
 
 die Netzwerkscripte automatisch nachladen. Danach stehen einem die Funktionen zur Verfügung.

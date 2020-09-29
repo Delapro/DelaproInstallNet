@@ -2,8 +2,18 @@
 #
 
 Function Install-NetPrompt {
-	&{
-		Function global:Prompt {"PS $env:COMPUTERNAME $(Get-Location)> "}
+	[CmdletBinding()]
+	Param ([String]$PromptExt)
+
+	If ($null -eq $PromptExt) {
+		&{
+			Function global:Prompt {"PS $env:COMPUTERNAME $(Get-Location)> "}
+		}
+		[System.Environment]::SetEnvironmentVariable("eyPrompt", $PromptExt)
+	} else {
+		&{
+			Function global:Prompt {"PS $env:eyPrompt $(Get-Location)> "}
+		}
 	}
 }
 
