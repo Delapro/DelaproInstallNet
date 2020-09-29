@@ -206,4 +206,32 @@ Function Install-WindowsAdminCenter {
 
 }
 
+Function Invoke-PrepareDelaproForNetwork {
+	[CmdletBinding()]
+	Param([String]$Netzlaufwerk='N:\'
+	)
+
+	# prüfen, ob Netzlaufwerk da ist
+	If (Test-Path $Netzlaufwerk) {
+		# dann Delapro von lokal nach Netz kopieren
+		# Verknüpfung anpassen
+		Set-DelaproShortCutDrive -Netzlaufwerk $Netzlaufwerk
+	} else {
+		throw "Netzlaufwerk $Netzlaufwerk nicht gefunden"
+	}
+}
+
+Function Set-DelaproShortCutDrive {
+	[CmdletBinding()]
+	Param([String]$Netzlaufwerk='N:\'
+	)
+
+	If (Test-Path $Netzlaufwerk) {
+		$link = Get-FileShortCut Delapro.Lnk
+		$Link.WorkingDirectory = $Link.WorkingDirectory('C:\', $Netzlaufwerk)
+		$Link.TargetPath = $Link.TargetPath('C:\', $Netzlaufwerk)
+		Set-FileShortCut -Shortcut $Link -TargetPath $Link.TargetPath -WorkingDirectory $Link.WorkingDirectory
+
+	}
+}
 # EOF: DLPInstallServer.PS1
