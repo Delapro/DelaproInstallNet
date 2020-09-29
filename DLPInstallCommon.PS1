@@ -17,6 +17,15 @@ Function Test-Group {
 	$null -ne (Get-LocalGroup -Name $Group -EA SilentlyContinue)
 }
 
+Function Test-EasyEnvironmentVars {
+	# TODO: zu implementieren
+	$true
+}
+
+Function Set-EasyEnvironmentVars {
+	# TODO: zu implementieren
+}
+
 Function Install-NetPrompt {
 	[CmdletBinding()]
 	Param ([String]$PromptExt)

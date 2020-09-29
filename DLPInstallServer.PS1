@@ -52,7 +52,7 @@ Function Install-easyPeerServer {
 		New-easyShare
 	}
 
-	If (-Not (Get-easyTester -Username $easyTester)) {
+	If (-Not (Test-User -Username $easyTester)) {
 		# net user $easyTester * /ADD
 		New-easyUser -Username $easyTester
 	}
