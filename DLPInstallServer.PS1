@@ -91,7 +91,10 @@ Function New-easyShare {
 	# früher war FolderEnumerationMode Unrestricted
 	New-SmbShare -Name $easyShare -Path $easySharePath -CachingMode None -Description Beschreibung -FolderEnumerationMode AccessBased -FullAccess $easyGroup, (Get-AdministratorLocalized), "SYSTEM" -LeasingMode None
 
-	# TODO: Berechtigungen für easy-Gruppe auch noch setzen: C:\easy -> Eigenschaften->Sicherheit->Erweitert->Berechtigung ändern->
+	# Berechtigungen für easy-Gruppe auch noch setzen:
+	# manuell: C:\easy -> Eigenschaften->Sicherheit->Erweitert->Berechtigung ändern->
+	# wir nehmen hier die Gruppe und nicht einen einzelnen Benutzer
+	Add-Acl -path $easySharePath -Username $easyGroup
 
 	# wenn bereits eine Freigabe besteht, müssen zumindest diese Parameter gesetzt werden:
 	# Get-SmbShare $easyShare|Set-SmbShare -CachingMode None -LeasingMode None
@@ -149,6 +152,47 @@ Function Install-Services {
 	}
 }
 
-# Get-ACL/Set-ACL Ersatz: http://woshub.com/manage-ntfs-permissions-powershell/
+Function Add-Acl {
+	[CmdletBinding()]
+	Param([String]$path,
+		  [String]$Username,
+		  [String]$Group)
+
+	$ok = $false
+	If ($Username.Length -eq 0 -and $Group.Length -eq 0) {
+		throw "Bitte Gruppe oder Benutzer angeben!"
+	}
+	If ($Username.Length -gt 0 -and $Group.Length -gt 0) {
+		throw "Bitte nur Gruppe oder nur Benutzer angeben!"
+	}
+
+	If ($Username.Length -gt 0) {
+		$ok = Test-User $Username
+	}
+	If ($Group.Length -gt 0) {
+		$ok = Test-Group $Group
+	}
+
+	If (Test-Path $path -and $ok) {
+		# Get-ACL/Set-ACL Ersatz: http://woshub.com/manage-ntfs-permissions-powershell/
+
+		$Permission = 'FullControl'
+		$Inherit = 'ContainerInherit, ObjectInherit'
+		$PropFlags = 'None'
+		$RuleType = 'Allow'
+
+		$PermSet = $user, $Permission, $Inherit, $PropFlags, $RuleType
+
+		$Rule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $PermSet
+
+		If ($Rule) {
+			$acl = Get-Acl -Path $path
+			$acl.SetAccessRule($Rule)
+			$acl | Set-Acl -Path $path
+		}
+	} else {
+		"Pfad, Gruppe oder Benutzer fehlerhaft!"
+	}
+}
 
 # EOF: DLPInstallServer.PS1
