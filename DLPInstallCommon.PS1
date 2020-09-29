@@ -5,7 +5,7 @@ Function Install-NetPrompt {
 	[CmdletBinding()]
 	Param ([String]$PromptExt)
 
-	If ($null -eq $PromptExt) {
+	If ($null -eq $PromptExt -or $PromptExt.Length -eq 0) {
 		&{
 			Function global:Prompt {"PS $env:COMPUTERNAME $(Get-Location)> "}
 		}
