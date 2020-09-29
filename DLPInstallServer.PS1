@@ -195,4 +195,15 @@ Function Add-Acl {
 	}
 }
 
+Function Install-WindowsAdminCenter {
+	
+	# TODO: to be implemented
+	Start https://aka.ms/WACDownload
+
+	# auf den Clients muss jeweils 
+	# Enable-PSRemoting -Force ausgeführt werden, dann können die 
+	# einzelnen Rechner im WAC hinzugefügt werden
+
+}
+
 # EOF: DLPInstallServer.PS1
