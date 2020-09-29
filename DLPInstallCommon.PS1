@@ -1,6 +1,36 @@
 # DLPInstallCommon.PS1
 #
 
+Function Add-Acl {
+	[CmdletBinding()]
+	Param([String]$path,
+		  [String]$Username)
+
+	If (Test-Path $path -and Test-User $Username) {
+		$Permission = 'FullControl'
+		$Inherit = 'ContainerInherit, ObjectInherit'
+		$PropFlags = 'None'
+		$RuleType = 'Allow'
+
+		$PermSet = $user, $Permission, $Inherit, $PropFlags, $RuleType
+
+		$Rule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $PermSet
+
+		If ($Rule) {
+			$acl = Get-Acl -Path $path
+			$acl.SetAccessRule($Rule)
+			$acl | Set-Acl -Path $path
+		}
+	}
+}
+
+Function Test-User {
+	[CmdletBinding()]
+	Param([String]$Username)
+
+	$null -ne (Get-LocalUser -Name $Username -EA SilentlyContinue)
+}
+
 Function Install-NetPrompt {
 	[CmdletBinding()]
 	Param ([String]$PromptExt)
