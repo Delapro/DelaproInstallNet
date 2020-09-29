@@ -1,6 +1,12 @@
 # DLPInstallCommon.PS1
 #
 
+Function Install-NetPrompt {
+	&{
+		Function global:Prompt {"PS $env:COMPUTERNAME $(Get-Location)> "}
+	}
+}
+
 Function Get-AdministratorLocalized {
 	$admin = Get-LocalGroup | Where-Object name -like 'Administrator*' | Select-Object -ExpandProperty Name
 	If ($null -eq $admin) {
