@@ -105,6 +105,15 @@ Function New-easyGroup {
 	New-LocalGroup -Name $Group -Description "easy Benutzergruppe" 
 }
 
+Function New-easyUser {
+	[CmdletBinding()]
+	Param([String]$Username,
+		  [securestring]$Password)
+
+	New-LocalUser -Name $Username -PasswordNeverExpires -Password $Password
+	Add-LocalGroupMember -Group $easyGroup -Member $UserName
+}
+
 Function Enable-NetworkSharingFirewallPorts {
 	[CmdletBinding()]
 	Param(
