@@ -213,9 +213,17 @@ Function Invoke-PrepareDelaproForNetwork {
 
 	# prüfen, ob Netzlaufwerk da ist
 	If (Test-Path $Netzlaufwerk) {
-		# dann Delapro von lokal nach Netz kopieren
-		# Verknüpfung anpassen
-		Set-DelaproShortCutDrive -Netzlaufwerk $Netzlaufwerk
+
+		$Dest = "$($Netzlaufwerk)Delapro"
+		If (Test-Path $Dest) {
+			throw "Zielverzeichnis $Dest exisitiert bereits!"
+		} else {
+			# dann Delapro von lokal nach Netz kopieren
+			Copy-Item C:\Delapro $Dest -Recurse -Verbose
+			# TODO: Spielprogramm!!
+			# Verknüpfung anpassen
+			Set-DelaproShortCutDrive -Netzlaufwerk $Netzlaufwerk
+		}
 	} else {
 		throw "Netzlaufwerk $Netzlaufwerk nicht gefunden"
 	}
