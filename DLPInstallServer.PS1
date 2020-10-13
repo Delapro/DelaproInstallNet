@@ -175,11 +175,12 @@ Function Add-Acl {
 
 	If (Test-Path $path -and $ok) {
 		# Get-ACL/Set-ACL Ersatz: http://woshub.com/manage-ntfs-permissions-powershell/
+		# https://adamtheautomator.com/how-to-manage-ntfs-permissions-with-powershell/
 
-		$Permission = 'FullControl'
-		$Inherit = 'ContainerInherit, ObjectInherit'
-		$PropFlags = 'None'
-		$RuleType = 'Allow'
+		$Permission = 'FullControl' # Optionen: [enum]::GetValues('System.Security.AccessControl.FileSystemRights')
+		$Inherit = 'ContainerInherit, ObjectInherit' # Optionen: [enum]::GetValues('System.Security.AccessControl.InheritanceFlags')
+		$PropFlags = 'None'	# Optionen: [enum]::GetValues('System.Security.AccessControl.PropagationFlags')
+		$RuleType = 'Allow' # Optionen: [enum]::GetValues('System.Security.AccessControl.AccessControlType')
 
 		$PermSet = $user, $Permission, $Inherit, $PropFlags, $RuleType
 
@@ -187,7 +188,7 @@ Function Add-Acl {
 
 		If ($Rule) {
 			$acl = Get-Acl -Path $path
-			$acl.SetAccessRule($Rule)
+			$acl.AddAccessRule($Rule)
 			$acl | Set-Acl -Path $path
 		}
 	} else {
