@@ -200,5 +200,5 @@ Das zu verbindende Netzlaufwerk muss zum Zeitpunkt der Erstellung des Scripts, w
 ```Powershell
 # erzeugt eine PS1-Datei mit dem Wiederherstellungsscript
 Save-NetDriveRefresh
-New-PowershellScriptShortcut -Path .\RefreshNetDrive.PS1 -Admin -LinkFilename 'Netzlaufwerk-Verbindung wiederherstellen' -Description 'Stellt die Verbindung zu einem Netzlaufwerk wieder her.' -Folder (Get-DesktopFolder -CurrentUser)
+New-PowershellScriptShortcut -Path .\RefreshNetDrive.PS1 -LinkFilename 'Netzlaufwerk-Verbindung wiederherstellen' -Description 'Stellt die Verbindung zu einem Netzlaufwerk wieder her.' -Folder (Get-DesktopFolder -CurrentUser)
 ```
