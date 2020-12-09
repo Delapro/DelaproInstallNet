@@ -39,8 +39,8 @@ Function Save-NetDriveRefresh {
 	$script = @"
 	# Netzwerkverbindung prüfen und gegebenenfalls wiederherstellen, sollte auf jedem Client lokal gespeichert und mittels Verknüpfung aufrufbar sein.
 	# es sollte für die Netzwerkeinrichtung ein NetSetup Unterverzeichnis im Delapro angelegt werden, damit darüber die nötigen Scripte erzeugt werden können und dann am einzelnen Client ausgeführt werden, damit die Einrichtung darüber schneller von statten geht.
-	`$localPath = $DLPDrive
-	`$remotePath = $RemotePath
+	`$localPath = `'$DLPDrive`'
+	`$remotePath = `'$RemotePath`'
 	If (((Get-SmbMapping -LocalPath `$localPath -ea SilentlyContinue).Status) -eq `$null) {
 	  # es existiert noch kein lokales Laufwerk, also neu anlegen
 	  New-SmbMapping -LocalPath `$localPath -RemotePath `$remotePath
@@ -60,7 +60,7 @@ Function Save-NetDriveRefresh {
 	} else {
 	  Write-Error "Probleme Verbindung zwischen `$localPath und `$remotePath aufzubauen."
 	  "Fehler wurden in die Windows Zwischenablage kopiert."
-	  $error | Set-Clipboard
+	  `$error | Set-Clipboard
 	  Start-Sleep -Seconds 30
 	}
 	
