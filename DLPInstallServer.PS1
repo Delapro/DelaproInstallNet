@@ -94,7 +94,7 @@ Function New-easyShare {
 	# Berechtigungen für easy-Gruppe auch noch setzen:
 	# manuell: C:\easy -> Eigenschaften->Sicherheit->Erweitert->Berechtigung ändern->
 	# wir nehmen hier die Gruppe und nicht einen einzelnen Benutzer
-	Add-Acl -path $easySharePath -Username $easyGroup
+	Add-Acl -path $easySharePath -Group $easyGroup
 
 	# wenn bereits eine Freigabe besteht, müssen zumindest diese Parameter gesetzt werden:
 	# Get-SmbShare $easyShare|Set-SmbShare -CachingMode None -LeasingMode None
