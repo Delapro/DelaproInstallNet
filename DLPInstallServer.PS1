@@ -182,7 +182,11 @@ Function Add-Acl {
 		$PropFlags = 'None'	# Optionen: [enum]::GetValues('System.Security.AccessControl.PropagationFlags')
 		$RuleType = 'Allow' # Optionen: [enum]::GetValues('System.Security.AccessControl.AccessControlType')
 
-		$PermSet = $user, $Permission, $Inherit, $PropFlags, $RuleType
+		If ($Username.Length -gt 0) {
+			$PermSet = $user, $Permission, $Inherit, $PropFlags, $RuleType
+		} else {
+			$PermSet = $Group, $Permission, $Inherit, $PropFlags, $RuleType
+		}
 
 		$Rule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $PermSet
 
