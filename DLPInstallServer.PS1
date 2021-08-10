@@ -173,7 +173,7 @@ Function Add-Acl {
 		$ok = Test-Group $Group
 	}
 
-	If (Test-Path $path -and $ok) {
+	If ((Test-Path $path) -and $ok) {
 		# Get-ACL/Set-ACL Ersatz: http://woshub.com/manage-ntfs-permissions-powershell/
 		# https://adamtheautomator.com/how-to-manage-ntfs-permissions-with-powershell/
 
