@@ -202,3 +202,13 @@ Das zu verbindende Netzlaufwerk muss zum Zeitpunkt der Erstellung des Scripts, w
 Save-NetDriveRefresh
 New-PowershellScriptShortcut -Path .\RefreshNetDrive.PS1 -LinkFilename 'Netzlaufwerk-Verbindung wiederherstellen' -Description 'Stellt die Verbindung zu einem Netzlaufwerk wieder her.' -Folder (Get-DesktopFolder -CurrentUser)
 ```
+
+### Stations-Umgebungsvariable setzen
+
+DLP_PRGVRT=STATIONx setzen.
+
+```Powershell
+# [System.EnvironmentVariableTarget]::Process
+# [System.EnvironmentVariableTarget]::User
+[System.Environment]::SetEnvironmentVariable('DLP_PRGVRT', 'STATION1', [System.EnvironmentVariableTarget]::Machine)
+```
