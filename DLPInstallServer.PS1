@@ -54,7 +54,8 @@ Function Install-easyPeerServer {
 
 	If (-Not (Test-User -Username $easyTester)) {
 		# net user $easyTester * /ADD
-		New-easyUser -Username $easyTester
+		$pw = ConvertTo-SecureString "easyTester1" -AsPlainText -Force
+		New-easyUser -Username $easyTester -Password $pw
 	}
 
 	Add-LocalGroupMember -Group $easyGroup -Member $easyTester
