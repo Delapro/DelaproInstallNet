@@ -60,6 +60,7 @@ Function Install-easyPeerServer {
 	}
 
 	Add-LocalGroupMember -Group $easyGroup -Member $easyTester
+	Add-LocalGroupMember -Group $easyGroup -Member $env:USERNAME
 
 	# SMB-Server Einstellungen vornehmen
 	Set-SmbServerConfiguration -AnnounceServer $true -Force
