@@ -262,20 +262,20 @@ Function Install-Etl2PcapConverter {
 Function Set-PasswordExpirationOff {
 	[CmdletBinding()]
 	Param(
-		[System.String]$Benutzer
+		[System.String]$Username
 	)
 
 	# https://docs.microsoft.com/en-us/windows/win32/api/iads/ne-iads-ads_user_flag_enum
 	$ADS_UF_DONT_EXPIRE_PASSWD = 65536 # 0x10000
 
-	# evtl. explizite Domain beachten: [ADSI]"WinNT://$computer/$Benutzer"
-	$user = [adsi]"WinNT://./$Benutzer"
+	# evtl. explizite Domain beachten: [ADSI]"WinNT://$computer/$Username"
+	$user = [adsi]"WinNT://./$Username"
 	If ($user) {
 		If ($null -ne $user.Name) {
 			$user.UserFlags.value = $user.UserFlags.value -bor $ADS_UF_DONT_EXPIRE_PASSWD
 			$user.CommitChanges()
 		} else {
-			throw "$Benutzer nicht gefunden, Passwortablauf wurde nicht deaktiviert."
+			throw "$Username nicht gefunden, Passwortablauf wurde nicht deaktiviert."
 		}
 	} else {
 		throw "Problem mit Benutzerverwaltungszugriff!"
@@ -286,7 +286,7 @@ Function Set-PasswordExpirationOff {
 Function Set-UserAccountDisabled {
 	[CmdletBinding()]
 	Param(
-		[System.String]$Benutzer
+		[System.String]$Username
 	)
 
 	# siehe auch: https://docs.microsoft.com/de-de/windows/win32/ad/managing-users
@@ -296,13 +296,13 @@ Function Set-UserAccountDisabled {
 	$ADS_UF_ACCOUNTDISABLE = 2 # 0x2
 	$ADS_UF_NORMAL_ACCOUNT = 512 # 0x200
 
-	$user = [adsi]"WinNT://./$Benutzer"
+	$user = [adsi]"WinNT://./$Username"
 	If ($user) {
 		If ($null -ne $user.Name) {
 			$user.UserFlags.value = $user.UserFlags.value -bor $ADS_UF_ACCOUNTDISABLE
 			$user.CommitChanges()
 		} else {
-			throw "$Benutzer nicht gefunden, Passwortablauf wurde nicht deaktiviert."
+			throw "$Username nicht gefunden, Passwortablauf wurde nicht deaktiviert."
 		}
 	} else {
 		throw "Problem mit Benutzerverwaltungszugriff!"
