@@ -56,6 +56,7 @@ Function Install-easyPeerServer {
 		# net user $easyTester * /ADD
 		$pw = ConvertTo-SecureString "easyTester1" -AsPlainText -Force
 		New-easyUser -Username $easyTester -Password $pw
+		Set-PasswordExpirationOff -Username $easyTester
 	}
 
 	Add-LocalGroupMember -Group $easyGroup -Member $easyTester
