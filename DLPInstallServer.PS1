@@ -50,6 +50,8 @@ Function Install-easyPeerServer {
 
 	If (-Not (Get-easyShare)) {
 		New-easyShare
+		# auch wenn die Share angelegt wurde, scheint der Zugriff noch nicht korrekt zu funktionieren,
+		# im Zweifel den Rechner neu starten!!
 	}
 
 	If (-Not (Test-User -Username $easyTester)) {
