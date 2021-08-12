@@ -27,6 +27,14 @@ die Netzwerkscripte automatisch nachladen. Danach stehen einem die Funktionen zu
 
 Wann immer möglich wird versucht ohne SMB1 auszukommen. Es sei denn es ist im Netz ein Gerät zwingend darauf angewiesen.
 
+## Umstellung von Einzelplatz- auf Netzwerkversion
+
+Verschiebung von \DELAPRO und \DELAGAME in \easy. Verknüpfung umstellen.
+
+Bitte beachten, dass GHOST*.BAT und XGHOST*.BAT-Dateien angepasst werden müssen, damit die Pfade für die PDF-Erzeugung stimmen!
+
+Auf einem Peer-Server sollte ein leeres C:\Delapro-Verzeichnis zurückbleiben, mit dem Hinweis auf den Umzug aufs Netz. Gleichzeitig muss aber der Pfad C:\DELAPRO\EXPORT\PDF\TEMP vorhanden sein, damit Ghostscript korrekt funktioniert. Auch sollte die DLPHD.ICO in das Verzeichnis kopiert werden und der Desktoplink darauf verweisen, damit immer das korrekte Symbol angezeigt wird.
+
 ## bei Problemen
 ```cmd
 nbtstat.exe /a $PeerServerName
