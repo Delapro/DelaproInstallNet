@@ -63,6 +63,9 @@ Function Install-easyPeerServer {
 
 	Add-LocalGroupMember -Group $easyGroup -Member $easyTester
 	Add-LocalGroupMember -Group $easyGroup -Member $env:USERNAME
+	# TODO: Benutzer von anderen Peer-Client-Rechnern hinzufügen
+	# $username="$($env:USERDOMAIN)\$($env:username)"; ($Username| Set-Clipboard); $username
+	# Add-LocalGroupMember -Group $easyGroup -Member ''
 
 	# SMB-Server Einstellungen vornehmen
 	Set-SmbServerConfiguration -AnnounceServer $true -Force
