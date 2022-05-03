@@ -211,6 +211,10 @@ Save-NetDriveRefresh
 New-PowershellScriptShortcut -Path .\RefreshNetDrive.PS1 -LinkFilename 'Netzlaufwerk-Verbindung wiederherstellen' -Description 'Stellt die Verbindung zu einem Netzlaufwerk wieder her.' -Folder (Get-DesktopFolder -CurrentUser)
 ```
 
+### fehlende Netzlaufwerke wegen Adminrechten
+
+siehe: https://docs.microsoft.com/en-us/troubleshoot/windows-client/networking/mapped-drives-not-available-from-elevated-command
+
 ### Stations-Umgebungsvariable setzen
 
 DLP_PRGVRT=STATIONx setzen.
