@@ -114,6 +114,12 @@ dir *.zip | Expand-Archive -Verbose -DestinationPath .
 
 Wenn man die Installation der Demoversion auf den einzelnen Stationen vermeiden möchte, so benötigt man doch gewisse Druckerinstallationen.
 
+Um nachfolgende Zeilen nicht ausführen zu müssen, kann man nun auch mit den Standard-Cmdlets die Clientinstallation mittels
+```Powershell
+Install-DelaproNetClientSetup
+```
+starten.
+
 > **Hinweis**
 > Damit nachfolgendes Script ausgeführt werden kann, müssen schon die Cmdlets von der Delapro-Standard-Installation geladen sein!
 
