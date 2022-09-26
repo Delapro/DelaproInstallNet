@@ -160,23 +160,8 @@ If ((@("gs9.00", "gs8.63", "gs8.64", "gs8.70", "gs8.71") -contains $gv[0].Name -
 }
 # TODO: GhostPDF.BAT in LASER-Verzeichnis kopieren
 
-# Ghostscript in GhostPDF.BAT korrekt setzen
-Update-DelaproGhostscript -PathDelaproGhostscript "$($DLPPath)\LASER\GHOSTPDF.BAT" -Verbose
-If (Test-Path "$($DLPPath)\LASER\GHOSTPDFX.BAT") {
-    Update-DelaproGhostscript -PathDelaproGhostscript "$($DLPPath)\LASER\GHOSTPDFX.BAT" -Verbose
-}
-If (Test-Path "$($DLPPath)\LASER\XGHOSTPDF.BAT") {
-    Update-DelaproGhostscript -PathDelaproGhostscript "$($DLPPath)\LASER\XGHOSTPDF.BAT" -Verbose
-}
-If (Test-Path "$($DLPPath)\LASER\XXGHOSTPDF.BAT") {
-    Update-DelaproGhostscript -PathDelaproGhostscript "$($DLPPath)\LASER\XXGHOSTPDF.BAT" -Verbose
-}
-If (Test-Path "$($DLPPath)\LASER\XGHOSTPDFX.BAT") {
-    Update-DelaproGhostscript -PathDelaproGhostscript "$($DLPPath)\LASER\XGHOSTPDFX.BAT" -Verbose
-}
-If (Test-Path "$($DLPPath)\LASER\XXGHOSTPDFX.BAT") {
-    Update-DelaproGhostscript -PathDelaproGhostscript "$($DLPPath)\LASER\XXGHOSTPDFX.BAT" -Verbose
-}
+# Ghostscript bei allen *GHOSTPDF*.BAT-Dateien setzen, indem man einfach den Pfad des Verzeichnis in dem die Dateien sind angibt, es werden also alle GHOSTPDF.BAT, XGHOSTPDFX.BAT und XXGHOSTPDFX.BAT-Dateien usw. aktualisiert
+Update-DelaproGhostscript -PathDelaproGhostscript "$($DLPPath)\LASER" -Verbose
 
 ```
 
