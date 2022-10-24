@@ -215,3 +215,16 @@ DLP_PRGVRT=STATIONx setzen.
 # [System.EnvironmentVariableTarget]::User
 [System.Environment]::SetEnvironmentVariable('DLP_PRGVRT', 'STATION1', [System.EnvironmentVariableTarget]::Machine)
 ```
+
+### Geschwindigkeits- bzw. Performance- oder Bandbreiteneinstellungen
+
+Prüfen, ob evtl. QoS-Restriktionen aktiv sind, mittels
+```Powershell
+Get-NetQosPolicy
+```
+siehe auch: https://woshub.com/limit-network-file-transfer-speed-windows/
+
+```Powershell
+Get-SmbBandwidthLimit
+```
+siehe auch: https://woshub.com/manage-windows-file-shares-with-powershell/
