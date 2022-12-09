@@ -228,3 +228,8 @@ siehe auch: https://woshub.com/limit-network-file-transfer-speed-windows/
 Get-SmbBandwidthLimit
 ```
 siehe auch: https://woshub.com/manage-windows-file-shares-with-powershell/
+
+Weitere Links in Sachen Performance:
+https://learn.microsoft.com/de-de/windows-server/networking/technologies/network-subsystem/net-sub-performance-tuning-nics
+https://learn.microsoft.com/de-de/windows-server/networking/technologies/hpn/rsc-in-the-vswitch
+
