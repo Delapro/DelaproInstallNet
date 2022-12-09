@@ -6,7 +6,7 @@ Hat man die normalen DelaproInstall-Skripte geladen, kann man mit dem Befehl
 
 ```Powershell
 # Dot-Sourcing damit die Funktionen zur Verfügung stehen!
-. Invoke-DelaproInstallNetDownloadAndInit
+. .\Invoke-DelaproInstallNetDownloadAndInit
 
 # für einen besseren Üblick ist es manchmal hilfreich zu wissen auf welchem
 # Rechner man gerade ist, dadurch wird der COMPUTERNAME ausgegeben
