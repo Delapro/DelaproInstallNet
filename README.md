@@ -36,6 +36,13 @@ Bitte beachten, dass GHOST*.BAT und XGHOST*.BAT-Dateien angepasst werden müssen
 Auf einem Peer-Server sollte ein leeres C:\Delapro-Verzeichnis zurückbleiben, mit dem Hinweis auf den Umzug aufs Netz. Gleichzeitig muss aber der Pfad C:\DELAPRO\EXPORT\PDF\TEMP vorhanden sein, damit Ghostscript korrekt funktioniert. Auch sollte die DLPHD.ICO in das Verzeichnis kopiert werden und der Desktoplink darauf verweisen, damit immer das korrekte Symbol angezeigt wird.
 
 ## bei Problemen
+
+Eines der größten Probleme sind Cachingmechanismen von Windows. Mittels Test-Clientcaching kann man prüfen, wie schnell oder langsam ein System auf das Anlegen oder Löschen einer Datei reagiert. Wenn sich hier ein Problem ergibt, SMBClientConfiguration überprüfen, vor allem die LifeCaches.
+
+```Powershell
+Test-ClientCaching -ServerUNCPath \\testserver\freigabe\test.txt
+```
+
 ```cmd
 nbtstat.exe /a $PeerServerName
 ```
