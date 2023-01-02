@@ -23,6 +23,7 @@ Function Install-easyPeerClient {
 	Set-SmbClientConfiguration -FileNotFoundCacheLifetime 0 -Force
 
 	# um sicher zu gehen, dass obige Konfiguration angewendet werden noch den Dienst neu starten
+	# Allerdings zieht der Neustart des Dienstes eine Smartscreen-Meldung nach sich: https://github.com/Delapro/DelaproInstallNet/blob/master/Doku/SmartScreen-Problem.md
 	Restart-Service LanmanWorkstation -Force -Verbose
 
 	# Mapping einrichten
