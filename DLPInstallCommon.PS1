@@ -309,4 +309,29 @@ Function Set-UserAccountDisabled {
 	}
 
 }
+
+# funktioniert auch mit Wildcard-UNC-Pfad, oder?
+Function Test-ClientCaching {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Mandatory)]
+        $ServerUNCPath,
+        [switch]$DisableCache
+    )
+
+    Write-Host "Abbruch mit STRG+C"
+    Write-Host ""
+
+    $uri = [uri]::new($ServerUNCPath)
+    If ($DisableCache) {
+        $ServerUNCPath = $ServerUNCPath.Replace($uri.host, "$($uri.host)`$NOCSC`$")
+    }
+    Write-Verbose "Teste $ServerUNCPath"
+
+    While($True) {
+        Write-Host "`r$($uri.Segments[-1]) vorhanden: $(Test-Path $ServerUNCPath)    " -NoNewline
+        Start-Sleep -Milliseconds 50
+    }
+}
+
 # EOF: DLPInstallCommon.PS1
