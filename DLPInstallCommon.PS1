@@ -1,6 +1,11 @@
 # DLPInstallCommon.PS1
 #
 
+# prüft ob der Rechner teil einer Domäne ist
+Function Test-RunningInDomain {
+    $env:COMPUTERNAME -ne $env:USERDOMAIN
+}
+
 # prüft ob der angegebene Benutzer existiert
 Function Test-User {
 	[CmdletBinding()]
