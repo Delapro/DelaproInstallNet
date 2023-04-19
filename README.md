@@ -240,3 +240,6 @@ Weitere Links in Sachen Performance:
 https://learn.microsoft.com/de-de/windows-server/networking/technologies/network-subsystem/net-sub-performance-tuning-nics
 https://learn.microsoft.com/de-de/windows-server/networking/technologies/hpn/rsc-in-the-vswitch
 
+### Autologin auf Rechner
+
+https://learn.microsoft.com/de-de/sysinternals/downloads/autologon
