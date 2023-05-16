@@ -243,3 +243,8 @@ https://learn.microsoft.com/de-de/windows-server/networking/technologies/hpn/rsc
 ### Autologin auf Rechner
 
 https://learn.microsoft.com/de-de/sysinternals/downloads/autologon
+
+Wenn Autologin aktiviert ist, sollte evtl die Passwordabfrage nach Standby deaktiviert werden:
+```Powershell
+powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONSOLELOCK 0
+```
