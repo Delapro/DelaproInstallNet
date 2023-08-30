@@ -3,7 +3,10 @@
 
 # prüft ob der Rechner teil einer Domäne ist
 Function Test-RunningInDomain {
-    $env:COMPUTERNAME -ne $env:USERDOMAIN
+    # deckt nicht alle Fälle ab
+    # $env:COMPUTERNAME -ne $env:USERDOMAIN
+    # bessere Variante:
+    (gwmi win32_computersystem).partofdomain
 }
 
 # prüft ob der angegebene Benutzer existiert
