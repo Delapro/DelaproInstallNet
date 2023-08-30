@@ -6,7 +6,7 @@ Function Test-RunningInDomain {
     # deckt nicht alle Fälle ab
     # $env:COMPUTERNAME -ne $env:USERDOMAIN
     # bessere Variante:
-    (gwmi win32_computersystem).partofdomain
+    (Get-CimInstance win32_computersystem).partofdomain
 }
 
 # prüft ob der angegebene Benutzer existiert
