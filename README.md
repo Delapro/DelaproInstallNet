@@ -213,6 +213,9 @@ New-PowershellScriptShortcut -Path .\RefreshNetDrive.PS1 -LinkFilename 'Netzlauf
 
 siehe: https://docs.microsoft.com/en-us/troubleshoot/windows-client/networking/mapped-drives-not-available-from-elevated-command
 
+### Beschreibung der Ereignisverfolgung für Neustart bei Server abschalten
+https://learn.microsoft.com/de-de/troubleshoot/windows-server/application-management/description-shutdown-event-tracker
+
 ### Stations-Umgebungsvariable setzen
 
 DLP_PRGVRT=STATIONx setzen.
