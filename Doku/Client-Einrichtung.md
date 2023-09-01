@@ -4,6 +4,8 @@ Es muss das Netzlaufwerk N: eingerichtet sein mit Setup-Verzeichnis für bestimm
 Der lokale Programmverteiler wird ausgetauscht mit speziellen Hinweisen auf das Netzlaufwerk. Combit-MAPI-Proxy wird explizit übers Netzlaufwerk registriert.
 Drucker wird V3-Treiber für korrekte Schachtunterstützung geladen.
 
+Dateien für Progvert und Netzlaufwerkverbinden siehe Unterverzeichnis: Client-Einrichtung-Dateien
+
 ```Powershell
 # ================================== Station Setup ================================
 $DelaproInstParameter = @{
