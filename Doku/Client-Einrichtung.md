@@ -92,6 +92,6 @@ Set-SmbClientConfiguration -DirectoryCacheLifetime 0 -Force
 Set-SmbClientConfiguration -FileInfoCacheLifetime 0 -Force
 Set-SmbClientConfiguration -FileNotFoundCacheLifetime 0 -Force
 
-# gegebenenfalls noch NetzLWVerbinden in Autostart legen
+# gegebenenfalls noch NetzLWVerbinden in Autostart legen, als Verlnüpfung bei Win11 über "weitere Optionen"
 Show-StartupFolder
 ```
