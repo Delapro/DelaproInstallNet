@@ -56,7 +56,7 @@ Function Install-easyPeerServer {
 
 	If (-Not (Test-User -Username $easyTester)) {
 		# net user $easyTester * /ADD
-		$pw = ConvertTo-SecureString "easyTester1" -AsPlainText -Force
+		$pw = ConvertTo-SecureString $easyTesterPW -AsPlainText -Force
 		New-easyUser -Username $easyTester -Password $pw
 		Set-PasswordExpirationOff -Username $easyTester
 	}
