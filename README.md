@@ -23,6 +23,9 @@ die Netzwerkscripte automatisch nachladen. Danach stehen einem die Funktionen zu
 >
 > Die Scripts werden ausschließlich unter Windows 10 1803 und neuer sowie Server 2016 und neuer getestet.
 
+## Beispiel für ein Beispielscript für die Clientinstallation
+siehe: [Client-Einrichtung](Doku/Client-Einrichtung.md)
+
 ## Hinweis zu SMB1
 
 Wann immer möglich wird versucht ohne SMB1 auszukommen. Es sei denn es ist im Netz ein Gerät zwingend darauf angewiesen.
