@@ -12,7 +12,7 @@ $easyGroup = "easy"
 
 # Benutzer zum Testen
 $easyTester = "easyTester"
-$easyTesterPW = "easy1"
+$easyTesterPW = "eyTest1#"
 
 # Arbeitsgruppe
 $peerWorkgroup = "WORKGROUP"
