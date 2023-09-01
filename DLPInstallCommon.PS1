@@ -110,7 +110,7 @@ Function Test-ICMPEcho {
 	$echoRules += 'FPS-ICMP4-ERQ-In', 'FPS-ICMP4-ERQ-Out'
 	$echoRules += 'FPS-ICMP6-ERQ-In', 'FPS-ICMP6-ERQ-Out'
 
-	Get-NetFirewallRule FPS-ICMP* | Where-Object Enabled -eq $true
+	Get-NetFirewallRule FPS-ICMP* | Where-Object Enabled -eq 'True'  # nicht(!): $true
 
 }
 
