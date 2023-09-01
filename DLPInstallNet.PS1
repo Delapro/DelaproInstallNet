@@ -17,7 +17,7 @@ $easyTesterPW = "easy1"
 # Arbeitsgruppe
 $peerWorkgroup = "WORKGROUP"
 
-$PeerServerName = "PeerServer.local"
+$PeerServerName = "PeerServer.localdomain"
 
 # Firewallregeln
 $FirewallNetshareGroup = "File and Printer Sharing"
