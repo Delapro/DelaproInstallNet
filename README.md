@@ -38,6 +38,18 @@ Bitte beachten, dass GHOST*.BAT und XGHOST*.BAT-Dateien angepasst werden müssen
 
 Auf einem Peer-Server sollte ein leeres C:\Delapro-Verzeichnis zurückbleiben, mit dem Hinweis auf den Umzug aufs Netz. Gleichzeitig muss aber der Pfad C:\DELAPRO\EXPORT\PDF\TEMP vorhanden sein, damit Ghostscript korrekt funktioniert. Auch sollte die DLPHD.ICO in das Verzeichnis kopiert werden und der Desktoplink darauf verweisen, damit immer das korrekte Symbol angezeigt wird.
 
+> Wichtig: GHOST*.BAT sollte erweitert werden, dass wenn auf dem Server, falls lokal gearbeitet wird, auf das Verzeichnis C:\easy\Delapro zugegriffen wird, dass dann eingegriffen wird und das Erzeugen von PDF-Dateien verhindert wird. Sonst passiert es, dass falsche PDF-Dateien in z. B. eine E-Mail gepackt werden!! Dieses Problem tritt immer dann auf, wenn es Probleme mit dem Netzlaufwerk N: gibt und keine Verbindung hergestellt werden konnte!
+
+GHOSTPDF.BAT:
+```
+IF /I %CD% == C:\easy\Delapro (
+  PDFFILE=C:\easy\Delapro\Export\PDF\GibtsNicht.PDF
+  DEL %ESPFILE%
+) ELSE (
+...
+)
+```
+
 ## bei Problemen
 
 Eines der größten Probleme sind Cachingmechanismen von Windows. Mittels Test-Clientcaching kann man prüfen, wie schnell oder langsam ein System auf das Anlegen oder Löschen einer Datei reagiert. Wenn sich hier ein Problem ergibt, SMBClientConfiguration überprüfen, vor allem die LifeCaches.
