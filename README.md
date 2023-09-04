@@ -177,6 +177,12 @@ Update-DelaproGhostscript -PathDelaproGhostscript "$($DLPPath)\LASER" -Verbose
 
 ## Sonstiges
 
+### Server-Manager von Windows-Server
+
+Server-Manager kann man vom automatischen Start abbringen, indem man im Verwalten-Menü den Punkt Server-Manager-Eigenschaften öffnet und dann den Punkt "Server-Manager beim Anmelden nicht automatisch starten" aktiviert.
+
+Soll der Server-Manager manuell gestartet werden, findet man ihn direkt im System32-Verzeichnis mit dem Namen ServerManager.exe und kann ihn so auch per Commandline direkt starten.
+
 ### Passwortänderung per Verknüpfung
 
 Im einfachen Peernetz müssen bei Passwortänderungen diese synchron gehalten werden, damit dies komfortabel für den Benutzer möglich ist, kann man diese Verknüpfung verwenden:
