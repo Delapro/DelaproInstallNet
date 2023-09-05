@@ -57,7 +57,7 @@ IF /I %CD% == C:\easy\Delapro (
 Manchmal ein Thema, die Meldung:
 > Systemfehler 1219 aufgetreten. Mehrfache Verbindungen zu einem Server oder einer freigegebenen Ressource von demselben Benutzer unter Verwendung mehrerer Benutzernamen sind nicht zulässig. Trennen Sie alle früheren Verbindungen zu dem Server bzw. der freigegebenen Ressource, und versuchen Sie es erneut.
 
-Die Lösung besteht darin dem Server einen alternativen Namen zukommen zu lassen, um darüber auf die freigegebene Ressource zuzugreifen. Am einfachsten per DNS, zur Not über die lokalen HOSTS-Dateien. Falls man einen Samba-Server gegenüber hat kann man auch in der smb.conf-Datei aliases setzen. siehe auch: https://superuser.com/questions/95872/sambawindows-allow-multiple-connections-by-different-users
+Die Lösung besteht darin dem Server einen alternativen Namen zukommen zu lassen, um darüber auf die freigegebene Ressource zuzugreifen. Am einfachsten per DNS, zur Not über die lokalen HOSTS-Dateien. Falls man einen Samba-Server gegenüber hat kann man auch in der smb.conf-Datei aliases setzen. siehe auch: https://superuser.com/questions/95872/sambawindows-allow-multiple-connections-by-different-users bzw. https://learn.microsoft.com/de-DE/troubleshoot/windows-server/networking/cannot-connect-to-network-share
 
 ### Caching
 Eines der größten Probleme sind Cachingmechanismen von Windows. Mittels Test-Clientcaching kann man prüfen, wie schnell oder langsam ein System auf das Anlegen oder Löschen einer Datei reagiert. Wenn sich hier ein Problem ergibt, SMBClientConfiguration überprüfen, vor allem die LifeCaches.
