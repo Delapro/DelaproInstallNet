@@ -21,6 +21,8 @@ Install-Delapro @DelaproInstParameter
 net use N: \\core\easy /SAVECRED /PERSTITENT:YES
 # Daten wie oben für easyNetz-Benutzer
 
+# TODO: Fernwartung sollte auf lokales C:\Delapro\Fernwartung verweisen, bzw. bei Updates sollte von N:\Delapro\Fernwartung kopiert werden
+
 # Outlook 64Bit:
 $DelaproPath='N:\Delapro'
 If ((Get-DefaultEMailClient) -eq 'Microsoft Outlook, x64') {
