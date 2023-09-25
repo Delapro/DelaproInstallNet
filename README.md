@@ -59,6 +59,15 @@ Manchmal ein Thema, die Meldung:
 
 Die Lösung besteht darin dem Server einen alternativen Namen zukommen zu lassen, um darüber auf die freigegebene Ressource zuzugreifen. Am einfachsten per DNS, zur Not über die lokalen HOSTS-Dateien. Falls man einen Samba-Server gegenüber hat kann man auch in der smb.conf-Datei aliases setzen. siehe auch: https://superuser.com/questions/95872/sambawindows-allow-multiple-connections-by-different-users bzw. https://learn.microsoft.com/de-DE/troubleshoot/windows-server/networking/cannot-connect-to-network-share
 
+### Caching von Netzwerkverbindungen
+
+In der Registrierung finden sich Eintragungen für die Netzwerkverbindungen mit Laufwerksbuchstaben:
+```
+reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2
+reg query HKCU\Network
+Restart-Service LanmanWorkstation -Verbose
+```
+
 ### Caching
 Eines der größten Probleme sind Cachingmechanismen von Windows. Mittels Test-Clientcaching kann man prüfen, wie schnell oder langsam ein System auf das Anlegen oder Löschen einer Datei reagiert. Wenn sich hier ein Problem ergibt, SMBClientConfiguration überprüfen, vor allem die LifeCaches.
 
