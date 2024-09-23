@@ -19,15 +19,26 @@ $peerWorkgroup = "WORKGROUP"
 
 $PeerServerName = "PeerServer.localdomain"
 
+$OSLanguageDE = (Get-WinSystemLocale).Name -eq "de-DE"
+
 # Firewallregeln
-$FirewallNetshareGroup = "File and Printer Sharing"
-$FirewallNetshareGroup = "Datei- und Druckerfreigabe"
+If ($OSLanguageDE) {
+    $FirewallNetshareGroup = "Datei- und Druckerfreigabe"
+} else {
+    $FirewallNetshareGroup = "File and Printer Sharing"
+}
 
-$FirewallNetworkDiscoveryGroup = "Network Discovery"
-$FirewallNetworkDiscoveryGroup = "Netzwerkerkennung"
+If ($OSLanguageDE) {
+    $FirewallNetworkDiscoveryGroup = "Netzwerkerkennung"
+} else {
+    $FirewallNetworkDiscoveryGroup = "Network Discovery"
+}
 
-$FirewallRemoteDesktop = "Remote Desktop"
-$FirewallRemoteDesktop = "Remotedesktop"
+If ($OSLanguageDE) {
+    $FirewallRemoteDesktop = "Remotedesktop"
+} else {
+    $FirewallRemoteDesktop = "Remote Desktop"
+}
 
 # Module einbinden
 . .\DLPInstallCommon.PS1
