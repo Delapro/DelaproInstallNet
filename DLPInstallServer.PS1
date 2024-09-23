@@ -20,7 +20,7 @@ Function Install-easyPeerServer {
 	}
 
 	If (-Not (Test-ConnectionProfilePrivateOrDomain)) {
-		Enable-ConnectionProfilePrivateOrDomain
+		Enable-ConnectionProfilePrivate
 	}
 
 	If (-Not (Test-ICMPEcho)) {
