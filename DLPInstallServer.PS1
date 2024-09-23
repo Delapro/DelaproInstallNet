@@ -44,7 +44,7 @@ Function Install-easyPeerServer {
 		Set-EasyEnvironmentVars
 	}
 
-	If (-Not (Get-easyGroup)) {
+	If (-Not (Get-easyGroup -Group $easyGroup)) {
 		New-easyGroup -Group $easyGroup
 	}
 
