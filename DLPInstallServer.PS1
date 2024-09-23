@@ -108,6 +108,13 @@ Function New-easyShare {
 	# Get-SmbShare $easyShare|Set-SmbShare -CachingMode None -LeasingMode None
 }
 
+Function Get-easyGroup {
+	[CmdletBinding()]
+	Param([String]$Group)
+
+	Get-LocalGroup -Name $Group -ErrorAction SilentlyContinue
+}
+
 # Benutzergruppe einrichten
 Function New-easyGroup {
 	[CmdletBinding()]
