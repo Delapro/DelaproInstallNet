@@ -135,7 +135,7 @@ Function Test-RemoteDesktop {
 
 Function Test-NetConnectionProfilePrivateOrDomain {
 
-	-Not ((Get-NetConnectionProfile).NetCategory -eq [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetConnectionProfile.NetworkCategory]::Public)
+	-Not ((Get-NetConnectionProfile).NetworkCategory -eq [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetConnectionProfile.NetworkCategory]::Public)
 
 }
 
