@@ -19,8 +19,8 @@ Function Install-easyPeerServer {
 		Disable-EnergySaveSettings
 	}
 
-	If (-Not (Test-ConnectionProfilePrivateOrDomain)) {
-		Enable-ConnectionProfilePrivate
+	If (-Not (Test-NetConnectionProfilePrivateOrDomain)) {
+		Enable-NetConnectionProfilePrivate
 	}
 
 	If (-Not (Test-ICMPEcho)) {
