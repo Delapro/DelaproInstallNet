@@ -133,6 +133,18 @@ Function Test-RemoteDesktop {
 
 }
 
+Function Test-NetConnectionProfilePrivateOrDomain {
+
+	-Not ((Get-NetConnectionProfile).NetCategory -eq [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetConnectionProfile.NetworkCategory]::Public)
+
+}
+
+Function Enable-NetConnectionProfilePrivate {
+
+	Set-NetConnectionProfile -InterfaceIndex (Get-NetConnectionProfile).InterfaceIndex -NetworkCategory Private
+
+}
+
 Function Disable-RemoteDesktop {
 
 	Set-NetFirewallRule -DisplayGroup $FirewallRemoteDesktop -Enabled False
