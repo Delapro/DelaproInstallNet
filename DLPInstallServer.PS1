@@ -89,6 +89,13 @@ Function Install-easyPeerServer {
 
 }
 
+Function Get-easyShare {
+	[CmdletBinding()]
+	Param([Parameter(Mandatory=$true)][String]$ShareName)
+
+	Get-SmbShare -Name $ShareName -ErrorAction SilentlyContinue
+}
+
 # easyShare einrichten
 Function New-easyShare {
 	[CmdletBinding()]
@@ -110,7 +117,7 @@ Function New-easyShare {
 
 Function Get-easyGroup {
 	[CmdletBinding()]
-	Param([String]$Group)
+	Param([Parameter(Mandatory=$true)][String]$Group)
 
 	Get-LocalGroup -Name $Group -ErrorAction SilentlyContinue
 }
