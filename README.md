@@ -26,6 +26,12 @@ die Netzwerkscripte automatisch nachladen. Danach stehen einem die Funktionen zu
 ## Beispiel für ein Beispielscript für die Clientinstallation
 siehe: [Client-Einrichtung](Doku/Client-Einrichtung.md)
 
+## Hinweis zu Windows Server 2025 und Windows 11 24H2 wegen SMB-Signing Vorgabe
+
+Bei Windows 11 24H2 wurde SMB-Signing zur Pflicht: https://techcommunity.microsoft.com/t5/storage-at-microsoft/accessing-a-third-party-nas-with-smb-in-windows-11-24h2-may-fail/ba-p/4154300
+Beim Server wurden jede Menge SMB-Features neu eingeführt: https://techcommunity.microsoft.com/t5/storage-at-microsoft/smb-security-hardening-in-windows-server-2025-amp-windows-11/ba-p/4226591
+
+
 ## Hinweis zu SMB1
 
 Wann immer möglich wird versucht ohne SMB1 auszukommen. Es sei denn es ist im Netz ein Gerät zwingend darauf angewiesen.
