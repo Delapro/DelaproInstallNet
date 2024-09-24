@@ -143,6 +143,16 @@ Function New-easyUser {
 	Add-LocalGroupMember -Group $easyGroup -Member $UserName
 }
 
+Function Test-NetworkSharingFirewallPorts {
+	[CmdletBinding()]
+	Param(
+		$Profile="Private"
+	)
+
+	$fwRules = Get-NetFirewallProfile -Profile $Profile | Get-NetFirewallRule | Where-Object DisplayGroup -eq $FirewallNetshareGroup
+	(($fwRules | where Enabled -eq false).Count -eq 0)
+}
+
 Function Enable-NetworkSharingFirewallPorts {
 	[CmdletBinding()]
 	Param(
