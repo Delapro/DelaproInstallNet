@@ -14,8 +14,8 @@ $easyGroup = "easy"
 $easyTester = "easyTester"
 $easyTesterPW = "eyTest1#"
 
-# Arbeitsgruppe
-$peerWorkgroup = "WORKGROUP"
+# Arbeitsgruppe dynamisch ermitteln, außerhalb der Domäne ergibt es "WORKGROUP"
+$peerWorkgroup = (Get-CimInstance Win32_ComputerSystem).Domain
 
 $PeerServerName = "PeerServer.localdomain"
 
