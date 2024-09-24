@@ -52,7 +52,7 @@ Function Install-easyPeerServer {
 		New-easyGroup -Group $easyGroup
 	}
 
-	If (-Not (Get-easyShare)) {
+	If (-Not (Get-easyShare -ShareName $easyShare)) {
 		New-easyShare
 		# auch wenn die Share angelegt wurde, scheint der Zugriff noch nicht korrekt zu funktionieren,
 		# im Zweifel den Rechner neu starten!!
