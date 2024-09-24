@@ -20,7 +20,11 @@ Function Install-easyPeerServer {
 	}
 
 	If (-Not (Test-NetConnectionProfilePrivateOrDomain)) {
-		Enable-NetConnectionProfilePrivate
+		If (-Not (Test-RunningInDomain)) {
+			Enable-NetConnectionProfilePrivate
+		} else {
+			Write-Host 'Wirklich Peer-Server? Domäne ist aktiv! Get-NetConnectionprofile manuell anpassen.' -ForegroundColor Yellow
+		}
 	}
 
 	If (-Not (Test-ICMPEcho)) {
