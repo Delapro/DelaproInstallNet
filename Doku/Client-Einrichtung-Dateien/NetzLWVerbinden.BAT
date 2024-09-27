@@ -11,4 +11,9 @@ REM
 REM   Benutzerdaten kommen von SaveCred: cmdkey /List:Server-Alias
 REM   dazu einmalig NET USE N: \\Server-Alias\EASY /SAVECRED /PERSISTENT:YES aufrufen und die Daten eingeben
 REM
+REM   Oder mittels
+REM   cmdkey /add:ServerHostname /user:easyTester /pass
+REM   hinzufügen und dann 
+REM   NET USE N: \\Server-Alias\EASY /user:easyTester die Verbindung aufbauen
+REM
 NET USE N: \\Server-Alias\EASY
