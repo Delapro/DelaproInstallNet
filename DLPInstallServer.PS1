@@ -75,7 +75,7 @@ Function Install-easyPeerServer {
 	Set-SmbServerConfiguration -AnnounceServer $true -Force
 	If (Test-Windows11-24H2) {
 		Set-SmbServerConfiguration -AutoDisconnectTimeoutInMinutesV1 0 -Force
-		Set-SmbServerConfiguration -AutoDisconnectTimeoutInMinutesV2 0 -Force
+		Set-SmbServerConfiguration -AutoDisconnectTimeoutInSecondsV2 0 -Force
 	} else {
 		Set-SmbServerConfiguration -AutoDisconnectTimeout 0 -Force
 	}
