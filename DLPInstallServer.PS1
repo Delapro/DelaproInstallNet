@@ -73,7 +73,12 @@ Function Install-easyPeerServer {
 
 	# SMB-Server Einstellungen vornehmen
 	Set-SmbServerConfiguration -AnnounceServer $true -Force
-	Set-SmbServerConfiguration -AutoDisconnectTimeout 0 -Force
+	If (Test-Windows11-24H2) {
+		Set-SmbServerConfiguration -AutoDisconnectTimeoutInMinutesV1 0 -Force
+		Set-SmbServerConfiguration -AutoDisconnectTimeoutInMinutesV2 0 -Force
+	} else {
+		Set-SmbServerConfiguration -AutoDisconnectTimeout 0 -Force
+	}
 	Set-SmbServerConfiguration -EnableLeasing $false -Force
 	Set-SmbServerConfiguration -EnableOplocks $false -Force
 	Set-SmbServerConfiguration -ServerHidden $false -Force
