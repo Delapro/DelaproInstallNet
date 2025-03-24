@@ -5,7 +5,7 @@ PeerServer Vorgehensweise, Neueinrichtung mit späterer Datenübernahme
 + korrekte Netzwerkkartengeschwindigkeit checken <Code>(Get-NetAdapter |where status -eq up)|select Name, Interfacedescription, ifindex, linkspeed</Code>
 + Delapro Demoversion auf C: installieren
 + Netzlaufwerk (N:) einrichten
-+ Rechte testen, gegebenfalls Rechner neu starten: runas /user:easyTester /profile cmd
++ Rechte testen, gegebenfalls Rechner neu starten: <Code>runas /user:easyTester /profile cmd</Code>
 + Ordner Delapro und Delagame nach N: verschieben
 + neuen Ordner C:\Delapro\Export\PDF\Temp einrichten
 + in C:\Delapro folgende Dateien kopieren: PROGVERT.DBF (speziell von dieser Doku), DLP_MAIN.INI, DELAPRO.EXE, DLPHD.ICO
