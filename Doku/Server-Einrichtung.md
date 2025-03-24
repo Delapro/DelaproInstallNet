@@ -13,8 +13,8 @@ PeerServer Vorgehensweise, Neueinrichtung mit späterer Datenübernahme
 + NetzLWVerbinden.BAT für \\localhost\easy einrichten
 + N:\SETUP\CLIENT und N:\SETUP\SERVER anlegen, Serverinfos in ServerInfo.TXT (IP-Adresse, Hostname, Netz-Laufwerk, Gateway, DHCP, DNS-Infos, Benutzer) ablegen
 
-+ $DLPPath=Get-DelaproPath; $DlpGamePath=Get-DelaproPath -Delagame; $DLPPath; DLPGamePath
-+ Import-LastDelaproBackup -DestinationPath $DlpPath -Verbose
++ <Code>$DLPPath=Get-DelaproPath; $DlpGamePath=Get-DelaproPath -Delagame; $DLPPath; $DLPGamePath</Code>
++ <Code>Import-LastDelaproBackup -DestinationPath $DlpPath -Verbose</Code>
 + Update-DelaproGhostscript -PathDelaproGhostscript "$($DLPPath)\LASER" -Verbose
 + Invoke-CleanupDelapro $DlpPath -Verbose
 + Install-DelaproXMLFormulardateien -DelaproPath $DlpPath -DelaGamePath $DlpGamePath
