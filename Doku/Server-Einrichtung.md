@@ -1,5 +1,6 @@
 PeerServer Vorgehensweise, Neueinrichtung mit späterer Datenübernahme
 
++ evtl. Server benennen <Code>Rename-Computer -NewName Abrechnung</Code>
 + Prüfen von <Code>Get-NetConnectionProfile</Code>
 + korrekte Netzwerkkartengeschwindigkeit checken <Code>(Get-NetAdapter |where status -eq up)|select Name, Interfacedescription, ifindex, linkspeed</Code>
 + Delapro Demoversion auf C: installieren
