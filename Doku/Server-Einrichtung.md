@@ -1,5 +1,7 @@
 PeerServer Vorgehensweise, Neueinrichtung mit späterer Datenübernahme
 
++ Prüfen von <Code>Get-NetLocalProfile</Code>
++ korrekte Netzwerkkartengeschwindigkeit checken <Code>(Get-NetAdapter |where status -eq up)|select Name, Interfacedescription, ifindex, linkspeed</Code>
 + Delapro Demoversion auf C: installieren
 + Netzlaufwerk (N:) einrichten
 + Rechte testen, gegebenfalls Rechner neu starten: runas /user:easyTester /profile cmd
