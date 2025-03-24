@@ -19,3 +19,5 @@ PeerServer Vorgehensweise, Neueinrichtung mit späterer Datenübernahme
 + Invoke-CleanupDelapro $DlpPath -Verbose
 + Install-DelaproXMLFormulardateien -DelaproPath $DlpPath -DelaGamePath $DlpGamePath
 + SearchServerExceptions setzen
++ Sucherserver aktivieren https://github.com/Delapro/DelaproInstall/issues/21
+  
