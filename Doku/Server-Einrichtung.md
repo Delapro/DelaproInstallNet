@@ -2,7 +2,7 @@ PeerServer Vorgehensweise, Neueinrichtung mit späterer Datenübernahme
 
 + Delapro Demoversion auf C: installieren
 + Netzlaufwerk (N:) einrichten
-+ Rechte testen, gegebenfalls Rechner neu starten: runcmd /user:easyTester /profile cmd
++ Rechte testen, gegebenfalls Rechner neu starten: runas /user:easyTester /profile cmd
 + Ordner Delapro und Delagame nach N: verschieben
 + neuen Ordner C:\Delapro\Export\PDF\Temp einrichten
 + in C:\Delapro folgende Dateien kopieren: PROGVERT.DBF (speziell von dieser Doku), DLP_MAIN.INI, DELAPRO.EXE, DLPHD.ICO
