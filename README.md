@@ -33,6 +33,8 @@ siehe auch: https://woshub.com/smb-signing-nas-windows-11/
 
 Beim Server wurden jede Menge SMB-Features neu eingeführt: https://techcommunity.microsoft.com/t5/storage-at-microsoft/smb-security-hardening-in-windows-server-2025-amp-windows-11/ba-p/4226591
 
+Aus SMB-Signing resultierende Fehlermeldungen: https://woshub.com/an-extended-error-occurred-network-share/
+
 ## Hinweis zu SMB1
 
 Wann immer möglich wird versucht ohne SMB1 auszukommen. Es sei denn es ist im Netz ein Gerät zwingend darauf angewiesen.
