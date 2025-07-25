@@ -106,6 +106,10 @@ Get-WinEvent -LogName "Microsoft-Windows-NetworkProfile/Operational"|select -Fir
 Get-WinEvent -LogName "Microsoft-Windows-NCSI/Operational"|select -First 5 | ft -Wrap
 ```
 
+### IPv4 und IPv6
+
+siehe: https://woshub.com/prefer-ipv4-over-ipv6-windows/
+
 ### Netzwerkpakete mitschneiden
 
 Bei größeren Problemen bei der Netzwerkkommunikation bietet sich auch ein Netzwerkpaketmitschnitt an.
