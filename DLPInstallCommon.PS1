@@ -354,4 +354,32 @@ Function Test-ClientCaching {
     }
 }
 
+Function Test-Windows11-24H2 {
+    [CmdletBinding()]
+    param()
+
+    try {
+        $os = Get-CimInstance Win32_OperatingSystem
+
+        $caption     = $os.Caption       # z. B. "Microsoft Windows 11 Pro"
+        $buildNumber = [int]$os.BuildNumber
+
+        # Prüfen, ob Windows 11 erkannt wird
+        if ($caption -notmatch "Windows 11") {
+            return $false
+        }
+
+        # 24H2 = Build 26100 oder höher
+        if ($buildNumber -ge 26100) {
+            return $true
+        } else {
+            return $false
+        }
+    }
+    catch {
+        Write-Verbose "Fehler beim Abfragen von Win32_OperatingSystem: $_"
+        return $false
+    }
+}
+
 # EOF: DLPInstallCommon.PS1
