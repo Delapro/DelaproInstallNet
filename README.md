@@ -61,6 +61,14 @@ IF /I %CD% == C:\easy\Delapro (
 
 ## bei Problemen
 
+### Systemfehler 86, Auth fehlgeschlagen
+
+Systemfehler 86 kommt nach Kontaktaufnahme → also nicht „kein Zugriff“, sondern „Auth fehlgeschlagen“, d.h. die Firewall ist nicht das Problem sondern falscher Benutzer oder falsches Kennwort
+
+### Systemfehler 53 oder 67, Netzwerkpfad oder Netzwerkname nicht gefunden
+
+Wenn die Firewall SMB komplett blockt, bekämst du Fehler 53 („Netzwerkpfad nicht gefunden“) oder 67 („Netzwerkname nicht gefunden“), nicht 86.
+
 ### Systemfehler 1219, mehrfache Verbindungen zum Server
 
 Manchmal ein Thema, die Meldung:
