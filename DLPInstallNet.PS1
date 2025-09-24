@@ -12,7 +12,7 @@ $easyGroup = "easy"
 
 # Benutzer zum Testen
 $easyTester = "easyTester"
-$easyTesterPW = "eyTest1#"
+$easyTesterPW = "eyTest1!"
 
 # Arbeitsgruppe dynamisch ermitteln, außerhalb der Domäne ergibt es "WORKGROUP"
 $peerWorkgroup = (Get-CimInstance Win32_ComputerSystem).Domain
