@@ -114,6 +114,9 @@ Function New-easyShare {
 
 	# früher war FolderEnumerationMode Unrestricted
 	New-SmbShare -Name $easyShare -Path $easySharePath -CachingMode None -Description Beschreibung -FolderEnumerationMode AccessBased -FullAccess $easyGroup, (Get-AdministratorLocalized), "SYSTEM" -LeasingMode None
+	If (Test-Windows11-24H2) {
+		Set-SmbShare -Name $easyShare -EncryptData $true -Confirm:$false
+	}
 
 	# Berechtigungen für easy-Gruppe auch noch setzen:
 	# manuell: C:\easy -> Eigenschaften->Sicherheit->Erweitert->Berechtigung ändern->
