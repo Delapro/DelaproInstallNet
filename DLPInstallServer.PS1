@@ -43,6 +43,10 @@ Function Install-easyPeerServer {
 		Enable-NetworkSharingFirewallPorts
 	}
 
+	If (-Not (Test-ForceGuestClassic)) {
+		Set-ForceGuestClassic
+	}
+
 	If (-Not (Test-EasyEnvironmentVars)) {
 		# Umgebungsvariablen setzen, dauerhaft!
 		Set-EasyEnvironmentVars
@@ -149,6 +153,40 @@ Function New-easyUser {
 
 	New-LocalUser -Name $Username -PasswordNeverExpires -Password $Password
 	Add-LocalGroupMember -Group $easyGroup -Member $UserName
+}
+
+Function Test-ForceGuestClassic {
+    <#
+        Prüft den Registry-Wert ForceGuest.
+        Rückgabe: $true, wenn ForceGuest=0 (Classic); sonst $false
+    #>
+    $path = 'HKLM:\SYSTEM\CurrentControlSet\Control\Lsa'
+    try {
+        $value = (Get-ItemProperty -Path $path -Name ForceGuest -ErrorAction Stop).ForceGuest
+        return ($value -eq 0)
+    }
+    catch {
+        Write-Warning "ForceGuest konnte nicht gelesen werden: $_"
+        return $false
+    }
+}
+
+Function Set-ForceGuestClassic {
+    <#
+        Setzt ForceGuest auf 0 (Classic).
+        Hinweis: Wirksamkeit erst nach Neustart des Rechners!
+    #>
+    $path = 'HKLM:\SYSTEM\CurrentControlSet\Control\Lsa'
+    try {
+        $value = (Get-ItemProperty -Path $path -Name ForceGuest -ErrorAction Stop).ForceGuest
+        If ($value -ne 0) {
+			Set-ItemProperty -Path $path -Name ForceGuest -Value 0 -Force
+        	Write-Host "ForceGuest wurde auf 0 (Classic) gesetzt. Neustart erforderlich."
+		}
+    }
+    catch {
+        Write-Error "Fehler beim Setzen von ForceGuest: $_"
+    }
 }
 
 Function Test-NetworkSharingFirewallPorts {
