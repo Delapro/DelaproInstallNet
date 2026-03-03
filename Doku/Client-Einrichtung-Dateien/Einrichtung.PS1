@@ -7,4 +7,4 @@ Start-BitsTransfer https://raw.githubusercontent.com/Delapro/DelaproInstallNet/r
 # TODO: DLPHD.ICO für Verknüpfung
 # TODO: DLP_MAIN.INI
 # TODO: DELAPRO.EXE
-
+# TODO: Fernwartung-Verzeichnis mit AnyDesk und Teamviewer
