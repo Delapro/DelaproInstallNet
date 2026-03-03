@@ -5,4 +5,6 @@ Start-BitsTransfer https://github.com/Delapro/DelaproInstallNet/raw/refs/heads/m
 Start-BitsTransfer https://raw.githubusercontent.com/Delapro/DelaproInstallNet/refs/heads/master/Doku/Client-Einrichtung-Dateien/NetzLWVerbinden.BAT
 
 # TODO: DLPHD.ICO für Verknüpfung
+# TODO: DLP_MAIN.INI
+# TODO: DELAPRO.EXE
 
