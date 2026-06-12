@@ -1,10 +1,12 @@
 # Netzlaufwerk N: bei Peer-Server per SUBST einrichten für mehr Performance
 
-Als <Code>C:\easy\Install-DelaproSubstTask.ps1</Code> anlegen und dann einmal ausführen.
+Als <Code>C:\easy\Install-DelaproSubstTask.ps1</Code> anlegen und dann einmal als normaler Benutzer ausführen.
 
 ```Powershell
 # Install-DelaproSubstTask.ps1
-# Erstellt eine Login-Aufgabe, die N: => C:\easy per SUBST setzt.
+# Erstellt eine Benutzer-Logon-Aufgabe: N: => C:\easy
+
+$ErrorActionPreference = 'Stop'
 
 $TaskName   = 'Delapro - SUBST N'
 $ScriptDir  = Join-Path $env:LOCALAPPDATA 'Delapro'
@@ -99,7 +101,7 @@ $UserId        = "$env:USERDOMAIN\$env:USERNAME"
 
 $Action = New-ScheduledTaskAction `
     -Execute $PowerShellExe `
-    -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$ScriptPath`""
+    -Argument "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$ScriptPath`""
 
 $Trigger = New-ScheduledTaskTrigger `
     -AtLogOn `
@@ -108,7 +110,7 @@ $Trigger = New-ScheduledTaskTrigger `
 $Principal = New-ScheduledTaskPrincipal `
     -UserId $UserId `
     -LogonType Interactive `
-    -RunLevel LeastPrivilege
+    -RunLevel Limited
 
 $Settings = New-ScheduledTaskSettingsSet `
     -AllowStartIfOnBatteries `
@@ -126,12 +128,17 @@ Register-ScheduledTask `
 
 Start-ScheduledTask -TaskName $TaskName
 
-Write-Host "Geplante Aufgabe wurde erstellt: $TaskName"
+Write-Host "OK: Geplante Aufgabe wurde erstellt und gestartet: $TaskName"
 Write-Host "SUBST-Script: $ScriptPath"
 Write-Host "Logdatei: $env:LOCALAPPDATA\Delapro\Subst-N.log"
 ```
 
-Zum Prüfen:
+Nach dem Task schauen:
+```Powershell
+Get-ScheduledTask -TaskName 'Delapro - SUBST N'
+```
+
+Zum Prüfen von N:-Laufwerk:
 ```Powershell
 cmd /c subst
 
