@@ -76,6 +76,37 @@ Manchmal ein Thema, die Meldung:
 
 Die Lösung besteht darin dem Server einen alternativen Namen zukommen zu lassen, um darüber auf die freigegebene Ressource zuzugreifen. Am einfachsten per DNS, zur Not über die lokalen HOSTS-Dateien. Falls man einen Samba-Server gegenüber hat kann man auch in der smb.conf-Datei aliases setzen. siehe auch: https://superuser.com/questions/95872/sambawindows-allow-multiple-connections-by-different-users bzw. https://learn.microsoft.com/de-DE/troubleshoot/windows-server/networking/cannot-connect-to-network-share
 
+### das leidige Thema mit den Sicherheitsmeldungen
+
+#### Unsignierte EXE
+
+<img width="397" height="272" alt="image" src="https://github.com/user-attachments/assets/b82cfb2f-49b4-4b64-b462-036c38b8db92" />
+
+#### signierte EXE
+
+<img width="394" height="274" alt="image" src="https://github.com/user-attachments/assets/4a65317b-b567-49f7-9bab-93c3c0e25f95" />
+
+#### Lösung
+
+So kann man es lösen:
+```Powershell
+#requires Admin
+$lnk = 'C:\Users\Public\Desktop\Delapro.lnk'
+
+Remove-Item -LiteralPath $lnk -Force -ErrorAction SilentlyContinue
+
+$shell = New-Object -ComObject WScript.Shell
+$shortcut = $shell.CreateShortcut($lnk)
+
+$shortcut.TargetPath = "$env:WINDIR\System32\cmd.exe"
+$shortcut.Arguments = '/c start "" "N:\Delapro\Delapro.exe"'
+$shortcut.WorkingDirectory = 'N:\Delapro'
+$shortcut.IconLocation = 'C:\Delapro\DLPHD.Ico,0'
+$shortcut.Description = 'Delapro'
+
+$shortcut.Save()
+```
+
 ### Caching von Netzwerkverbindungen
 
 In der Registrierung finden sich Eintragungen für die Netzwerkverbindungen mit Laufwerksbuchstaben:
