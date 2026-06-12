@@ -43,6 +43,9 @@ Wann immer möglich wird versucht ohne SMB1 auszukommen. Es sei denn es ist im N
 
 Verschiebung von \DELAPRO und \DELAGAME in \easy. Verknüpfung umstellen.
 
+BILDER.DBF muss umgebogen werden!! Je nachdem ob die Bilder unter C:\BILDER oder C:\DELAPRO\BILDER liegen muss das BILDER-Verzeichnis mitverschoben werden!
+In DLP_MAIN.INI muss unter Sektion [Dateien] der Eintrag Bilder=N:\DELAPRO\BILDER umgestellt werden! Sollte alles groß geschrieben werden. Siehe auch https://github.com/Delapro/DelaproInstall/blob/master/Doku/Bildarchivierung.md
+
 Bitte beachten, dass GHOST*.BAT und XGHOST*.BAT-Dateien angepasst werden müssen, damit die Pfade für die PDF-Erzeugung stimmen!
 
 Auf einem Peer-Server sollte ein leeres C:\Delapro-Verzeichnis zurückbleiben, mit dem Hinweis auf den Umzug aufs Netz. Gleichzeitig muss aber der Pfad C:\DELAPRO\EXPORT\PDF\TEMP vorhanden sein, damit Ghostscript korrekt funktioniert. Auch sollte die DLPHD.ICO in das Verzeichnis kopiert werden und der Desktoplink darauf verweisen, damit immer das korrekte Symbol angezeigt wird.
